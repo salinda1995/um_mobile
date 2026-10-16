@@ -464,6 +464,24 @@ body.sidebar-hidden .content{padding-left:54px}
 .pos-brand-footer a:hover{text-decoration:underline;color:var(--wa)}
 @media(max-width:768px){.pos-brand-footer{bottom:67px;right:8px;font-size:8.5px;padding:3px 7px}}
 
+
+/* Login-only footer + Reload page */
+.login-brand-foot{position:absolute;left:0;right:0;bottom:10px;z-index:3;text-align:center;font-size:10px;line-height:1.3;color:var(--text-3);text-decoration:none;opacity:.8}
+.login-brand-foot:hover{text-decoration:underline;color:var(--text-2)}
+.rl-sims{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:12px}
+.rl-sim{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius-lg,16px);padding:11px 12px;cursor:pointer;transition:all .2s}
+.rl-sim.sel{border-color:var(--blue);box-shadow:0 0 0 2px rgba(10,132,255,.35)}
+.rl-sim-name{font-size:12px;font-weight:700;color:var(--text-2)}
+.rl-sim-bal{font-size:20px;font-weight:800;letter-spacing:-.02em;margin:2px 0}
+.rl-cells{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px}
+.rl-cell{padding:8px 10px;background:var(--glass-hover);border:1px solid var(--glass-border);border-radius:var(--radius-md)}
+.rl-hist-card{padding:12px}
+.rl-filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0 6px}
+.rl-filters select.ios-input{width:auto;min-width:0;padding:6px 26px 6px 10px;font-size:12px;height:auto}
+.rl-list{max-height:240px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.rl-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 2px;border-bottom:1px solid var(--separator)}
+.rl-row:last-child{border-bottom:0}
+.rl-row a{color:var(--blue)}
 </style>
 </head>
 <body>
@@ -486,6 +504,7 @@ body.sidebar-hidden .content{padding-left:54px}
     </form>
     <div class="auth-help">Use the Email/Password account created in Firebase Console → Authentication → Users. This is the main database account; after this, select your normal POS staff login.</div>
   </div>
+  <a class="login-brand-foot" href="https://wa.me/94756947700?text=Hi%20Look%20Mobile!" target="_blank" rel="noopener noreferrer">pos-lookmobile · 0756947700 · WhatsApp</a>
 </div>
 
 <div id="login-screen" class="login-screen hidden">
@@ -505,6 +524,7 @@ body.sidebar-hidden .content{padding-left:54px}
       <button class="ios-pill ghost full" style="margin-top:8px" onclick="backToUserList()">← Back</button>
     </div>
   </div>
+  <a class="login-brand-foot" href="https://wa.me/94756947700?text=Hi%20Look%20Mobile!" target="_blank" rel="noopener noreferrer">pos-lookmobile · 0756947700 · WhatsApp</a>
 </div>
 
 <div class="layout hidden" id="app-layout">
@@ -555,7 +575,6 @@ body.sidebar-hidden .content{padding-left:54px}
 <div id="modal-root"></div>
 <div id="receipt"></div>
 <div id="firebase-badge" class="firebase-badge hidden"><span class="fb-dot"></span><span id="fb-badge-text">Firebase</span></div>
-<a class="pos-brand-footer" href="https://wa.me/94756947700?text=Hi%20Look%20Mobile!" target="_blank" rel="noopener noreferrer" aria-label="Contact Look Mobile on WhatsApp">pos-lookmobile · 0756947700 · WhatsApp</a>
 
 <script>
 /* ═══════════════════════════════════════════════════════════════
@@ -1693,12 +1712,10 @@ function dashTrendsBody(range) {
   const best = data.reduce((a,b)=> b.value > a.value ? b : a, data[0]);
   const max = Math.max(1, ...data.map(x=>x.value));
   const W=820,H=280,PL=60,PR=24,PT=34,PB=44, iw=W-PL-PR, ih=H-PT-PB;
-  const px = i => PL + (n===1 ? iw/2 : iw*(i/(n-1)));
-  const py = v => PT+ih-(v/max)*ih;
-  const path = data.map((p,i)=>`${i?'L':'M'} ${px(i).toFixed(1)} ${py(p.value).toFixed(1)}`).join(' ');
-  const area = `M ${px(0)} ${PT+ih} L ${data.map((p,i)=>`${px(i).toFixed(1)} ${py(p.value).toFixed(1)}`).join(' L ')} L ${px(n-1)} ${PT+ih} Z`;
+  const slot = iw/n, bw = Math.max(4, Math.min(44, slot*0.62));
+  const px = i => PL + slot*i + slot/2;
   const fmt = v => m.money ? fmtInt(v) : String(Math.round(v));
-  const dots = data.map((p,i) => { const isBest = p===best && p.value>0; return `<g class="chart-point" style="cursor:pointer" onclick="dashPick(${i},this)"><circle cx="${px(i)}" cy="${py(p.value)}" r="16" fill="transparent"/><circle data-anchor="1" cx="${px(i)}" cy="${py(p.value)}" r="${isBest?6:4}" fill="${isBest?'var(--orange)':m.color}" stroke="var(--bg-grad-1)" stroke-width="2"/>${isBest?`<text x="${px(i)}" y="${py(p.value)-14}" text-anchor="middle" fill="var(--orange)" font-size="10.5" font-weight="800">★ ${fmt(p.value)}</text>`:''}</g>`; }).join('');
+  const dots = data.map((p,i) => { const isBest = p===best && p.value>0; const h = p.value>0 ? Math.max(2,(p.value/max)*ih) : 0; return `<g class="chart-point" style="cursor:pointer" onclick="dashPick(${i},this)"><rect x="${PL+slot*i}" y="${PT}" width="${slot}" height="${ih}" fill="transparent"/><rect data-anchor="1" x="${px(i)-bw/2}" y="${PT+ih-h}" width="${bw}" height="${h}" rx="${Math.min(5,bw/2)}" fill="${isBest?'var(--orange)':m.color}"/>${isBest?`<text x="${px(i)}" y="${PT+ih-h-6}" text-anchor="middle" fill="var(--orange)" font-size="10.5" font-weight="800">★ ${fmt(p.value)}</text>`:''}</g>`; }).join('');
   dashPickCtx = data.map(p => ({ title: p.fullLabel, lines: p.all.map(a => [a.label, a.money ? fmtInt(a.v) : String(a.v), a.id===m.id ? 'strong primary-c' : '']) }));
   return `
     <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">${defs.map(d => `<button class="chart-btn ${d.id===m.id?'active':''}" style="border:1px solid var(--glass-border)" onclick="dashSetMetric('${d.id}')">${d.label}</button>`).join('')}</div>
@@ -1708,10 +1725,8 @@ function dashTrendsBody(range) {
       ${dashStat('⭐ Best', fmt(best.value>0?best.value:0))}
       ${dashStat('Best day', best.value>0?esc(best.fullLabel):'-')}
     </div>
-    <div id="dash-chart-outer" style="position:relative" onclick="dashOuterClick(event)"><div class="chart-wrap"><svg viewBox="0 0 ${W} ${H}" width="100%" height="280" role="img" aria-label="${esc(m.label)} trend">
-      <defs><linearGradient id="trGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${m.color}" stop-opacity=".38"/><stop offset="100%" stop-color="${m.color}" stop-opacity="0"/></linearGradient></defs>
+    <div id="dash-chart-outer" style="position:relative" onclick="dashOuterClick(event)"><div class="chart-wrap"><svg viewBox="0 0 ${W} ${H}" width="100%" height="280" role="img" aria-label="${esc(m.label)} bar chart">
       ${svgAxes(W,H,PL,PR,PT,PB,max)}
-      <path d="${area}" fill="url(#trGrad)"/><path d="${path}" fill="none" stroke="${m.color}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
       ${dots}${svgXLabels(data,px,H)}</svg></div></div>`;
 }
 function dashOverviewBody() {
@@ -1767,7 +1782,7 @@ function dashCashBody(range) {
 }
 function dashboardChartsCard() {
   const tab = dashChartTab, range = dashChartRange; dashPickIdx = -1; dashPickCtx = [];
-  const tabs = [['trends','📈 Trends'],['overview','📊 Overview'],['cash','💵 Cash In/Out']];
+  const tabs = [['trends','📊 Sales'],['overview','📋 Overview'],['cash','💵 Cash In/Out']];
   const body = tab==='overview' ? dashOverviewBody() : tab==='cash' ? dashCashBody(range) : dashTrendsBody(range);
   return `<div id="dash-charts-card" class="card chart-card" style="margin-bottom:14px"><div class="chart-head"><div class="chart-toggle">${tabs.map(([v,t]) => `<button class="chart-btn ${tab===v?'active':''}" onclick="dashSetChartTab('${v}')">${t}</button>`).join('')}</div>${tab==='overview' ? '' : dashRangeToggle(range)}</div>${body}</div>`;
 }
@@ -1826,6 +1841,9 @@ function renderDashboard(root) {
   const lowStock = DB.products.map(p=>{ const cnt = DB.stock_units.filter(u=>u.product_id===p.id && u.status==='in_stock').length; return {...p, cnt}; }).filter(p => p.cnt <= (p.low_stock_threshold || DB.settings.low_stock));
   const lowAcc = DB.accessories.filter(a => (a.qty||0) <= (a.low_stock_threshold||2));
   const costVisible = canSeeCost();
+  const rs = reloadDaySummary(d);
+  const reloadSalesToday = reloadEntriesFor(d).filter(x=>x.type==='sale').reduce((a,x)=>a+Number(x.amount||0),0);
+  const profitTodayAll = profitToday - reloadSalesToday + (rs.hasClosing ? rs.profit : 0);
   const q = dashQuery.toLowerCase();
   let recentSales = [...DB.sales].sort((a,b)=>b.id-a.id);
   let recentRepairs = [...DB.repairs].sort((a,b)=>b.id-a.id);
@@ -1838,7 +1856,7 @@ function renderDashboard(root) {
     <div class="view-scroll">
       <div class="stat-grid" style="margin-bottom:14px">
         <div class="stat" onclick="navigateTo('reports')"><div class="stat-icon">💰</div><div class="stat-label">Today's Sales</div><div class="stat-value">${fmtInt(totalToday)}</div><div class="stat-sub">${todaySales.length} transactions</div></div>
-        ${costVisible ? `<div class="stat" onclick="navigateTo('reports')"><div class="stat-icon">📈</div><div class="stat-label">Profit Today</div><div class="stat-value success">${fmtInt(profitToday)}</div><div class="stat-sub">after cost</div></div>` : ''}
+        ${costVisible ? `<div class="stat" onclick="navigateTo('reports')"><div class="stat-icon">📈</div><div class="stat-label">Profit Today</div><div class="stat-value success">${fmtInt(profitTodayAll)}</div><div class="stat-sub">${rs.activeCount&&!rs.hasClosing?'reload profit pending':'after cost'}</div></div>` : ''}
         <div class="stat" onclick="navigateTo('orders')"><div class="stat-icon">📋</div><div class="stat-label">Active Orders</div><div class="stat-value primary-c">${activeOrders}</div><div class="stat-sub">${pendingOrderItems} item${pendingOrderItems!==1?'s':''} pending</div></div>
         <div class="stat" onclick="navigateTo('phonestock')"><div class="stat-icon">💰</div><div class="stat-label">Phone Stock (Cost)</div><div class="stat-value primary-c">${fmtInt(phoneStockCost)}</div><div class="stat-sub">${costVisible ? `sale: ${fmtInt(phoneStockSale)}` : 'cost value'}</div></div>
         <div class="stat" onclick="navigateTo('stock')"><div class="stat-icon">💵</div><div class="stat-label">Stock (Cost)</div><div class="stat-value primary-c">${fmtInt(accessoryStockCost)}</div><div class="stat-sub">${costVisible ? `sale: ${fmtInt(accessoryStockSale)}` : 'cost value'}</div></div>
@@ -1849,7 +1867,7 @@ function renderDashboard(root) {
         <div class="stat" onclick="navigateTo('phonestock')"><div class="stat-icon">📱</div><div class="stat-label">Phones In Stock</div><div class="stat-value primary-c">${inStock}</div><div class="stat-sub">units available</div></div>
         <div class="stat" onclick="navigateTo('stock')"><div class="stat-icon">📦</div><div class="stat-label">Accessories Qty</div><div class="stat-value">${accQty}</div><div class="stat-sub">${DB.accessories.length} items</div></div>
         <div class="stat" onclick="navigateTo('billsearch')"><div class="stat-icon">🔎</div><div class="stat-label">Bill Search</div><div class="stat-value primary-c">${DB.sales.length}</div><div class="stat-sub">total invoices</div></div>
-        <div class="stat" onclick="navigateTo('reload')"><div class="stat-icon">📲</div><div class="stat-label">Reload Today</div><div class="stat-value primary-c">${fmtInt(reloadDaySummary(today()).sales)}</div><div class="stat-sub">Sales · Profit ${reloadDaySummary(today()).hasClosing?fmtInt(reloadDaySummary(today()).profit):'enter closing balance'}</div></div>
+        <div class="stat" onclick="navigateTo('reload')"><div class="stat-icon">📲</div><div class="stat-label">Reload Today</div><div class="stat-value primary-c">${fmtInt(rs.sales)}</div><div class="stat-sub">${costVisible ? (rs.hasClosing ? `Profit ${fmtInt(rs.profit)} · ${fmtPct(rs.pct)}` : (rs.activeCount ? 'Profit: enter all SIM balances' : 'Sales · no SIM data yet')) : 'reload sales'}</div></div>
       </div>
       ${(()=>{ const cs=getCashSummary(); return `<div class="stat-grid" style="margin-bottom:14px"><div class="stat" onclick="showCashBalance()"><div class="stat-icon">💵</div><div class="stat-label">Cashier Cash</div><div class="stat-value success">${fmtInt(cs.balance)}</div><div class="stat-sub">recorded cash balance today</div></div><div class="stat"><div class="stat-icon">💸</div><div class="stat-label">Cash Out Today</div><div class="stat-value warn">${fmtInt(cs.cashOuts)}</div><div class="stat-sub">${cashMovementList().length} cash movement${cashMovementList().length!==1?'s':''}</div></div></div>`; })()}
       ${dashboardChartsCard()}
@@ -1949,12 +1967,29 @@ function showReloadSaleModal() {
   }, 'Add to Bill');
 }
 function reloadEntriesFor(dateStr){return (DB.reload_entries||[]).filter(x=>(x.created_at||'').startsWith(dateStr));}
-function reloadDaySummary(dateStr){
- const es=reloadEntriesFor(dateStr); const sales=es.filter(x=>x.type==='sale').reduce((a,x)=>a+Number(x.amount||0),0); const topups=es.filter(x=>x.type==='topup').reduce((a,x)=>a+Number(x.amount||0),0);
- const opening=RELOAD_CARRIERS.reduce((a,c)=>a+(Number(es.find(x=>x.type==='opening'&&x.carrier===c)?.amount)||0),0);
- const closing=RELOAD_CARRIERS.reduce((a,c)=>a+(Number(es.find(x=>x.type==='closing'&&x.carrier===c)?.amount)||0),0);
- const hasClosing=RELOAD_CARRIERS.every(c=>es.some(x=>x.type==='closing'&&x.carrier===c));
- const used=opening+topups-closing; return {sales,topups,opening,closing,used,profit:hasClosing?sales-used:0,hasClosing};
+const RELOAD_RANGES=[['today','Today'],['7d','7D'],['30d','30D'],['all','All']];
+const RELOAD_LABELS={sale:'Reload Sale',topup:'Add Credit',opening:'Opening',closing:'Closing'};
+let reloadSim=null;
+let reloadHist={range:'today',carrier:'all',type:'all',open:true};
+function fmtPct(v){return (v===null||v===undefined||isNaN(v))?'—':(Math.round(v*10)/10).toFixed(1)+'%';}
+/* One SIM, one day: opening + credits − closing = balance consumed; profit = reload money collected − consumed */
+function reloadSimStats(c,d){
+ d=d||today();
+ const es=reloadEntriesFor(d).filter(x=>x.carrier===c);
+ const sum=t=>es.filter(x=>x.type===t).reduce((a,x)=>a+Number(x.amount||0),0);
+ const opE=es.find(x=>x.type==='opening'),clE=es.find(x=>x.type==='closing');
+ const sales=sum('sale'),top=sum('topup'),hasOp=!!opE,hasCl=!!clE,op=Number(opE?.amount||0),cl=Number(clE?.amount||0);
+ const complete=hasOp&&hasCl,used=op+top-cl,profit=complete?sales-used:null;
+ return {c,sales,top,op,cl,hasOp,hasCl,active:es.length>0,complete,used,profit,pct:(complete&&sales>0)?profit/sales*100:null,balance:hasCl?cl:(hasOp?op+top-sales:null)};
+}
+function reloadDaySummary(d){
+ d=d||today();
+ const stats=RELOAD_CARRIERS.map(c=>reloadSimStats(c,d));
+ const act=stats.filter(x=>x.active);
+ const sales=stats.reduce((a,x)=>a+x.sales,0),topups=stats.reduce((a,x)=>a+x.top,0);
+ const done=act.length>0&&act.every(x=>x.complete);
+ const profit=done?act.reduce((a,x)=>a+x.profit,0):0;
+ return {stats,sales,topups,hasClosing:done,profit,pct:(done&&sales>0)?profit/sales*100:null,activeCount:act.length};
 }
 function upsertReloadBalance(type,carrier,amount,note=''){
  const d=today(); let old=(DB.reload_entries||[]).find(x=>x.type===type&&x.carrier===carrier&&(x.created_at||'').startsWith(d));
@@ -1962,31 +1997,62 @@ function upsertReloadBalance(type,carrier,amount,note=''){
  else DB.reload_entries.push({id:nextId('reload_entries'),type,carrier,amount,note,created_at:now(),user_id:currentUser?.id||null});
  save();
 }
-function showReloadBalanceModal(type){
- const isOpen=type==='opening', label=isOpen?'Morning Opening Balance':'Evening Remaining Balance';
- openModal(`📲 ${label}`, `<div class="form-grid"><p class="muted small">Enter the amount remaining/available on each SIM. You can update it later on the same day.</p>${RELOAD_CARRIERS.map(c=>{const old=reloadEntriesFor(today()).find(x=>x.type===type&&x.carrier===c);return field(c,`<input id="rb-${c}" class="ios-input" type="number" min="0" step="0.01" value="${old?Number(old.amount):''}" placeholder="0.00">`)}).join('')}</div>`,()=>{
-  const vals=RELOAD_CARRIERS.map(c=>({carrier:c,amount:Number(document.getElementById('rb-'+c).value||0)}));
-  vals.forEach(v=>upsertReloadBalance(type,v.carrier,v.amount)); toast(`${label} saved`,'success'); renderReload(document.getElementById('content'));
- },'Save Balances');
+function reloadRefresh(){ if(currentView==='reload') renderReload(document.getElementById('content')); }
+function showReloadBalanceModal(type,carrier){
+ const isOpen=type==='opening', label=isOpen?'Opening Balance':'Closing Balance';
+ const list=carrier?[carrier]:RELOAD_CARRIERS;
+ openModal(`📲 ${label}${carrier?' — '+carrier:''}`, `<div class="form-grid"><p class="muted small">${isOpen?'Morning: enter the balance on the SIM before the first reload.':'Evening: enter the balance left on the SIM. Profit is calculated automatically.'} You can edit it again the same day.</p>${list.map(c=>{const old=reloadEntriesFor(today()).find(x=>x.type===type&&x.carrier===c);return field(c,`<input id="rb-${c}" class="ios-input" type="number" min="0" step="0.01" value="${old?Number(old.amount):''}" placeholder="0.00" ${carrier?'autofocus':''}>`)}).join('')}</div>`,()=>{
+  const vals=list.map(c=>({carrier:c,raw:document.getElementById('rb-'+c).value})).filter(v=>v.raw!=='');
+  if(!vals.length){toast('Enter a balance','error');return false;}
+  if(vals.some(v=>Number(v.raw)<0)){toast('Balance cannot be negative','error');return false;}
+  vals.forEach(v=>upsertReloadBalance(type,v.carrier,Number(v.raw)));
+  let msg=`${label} saved`;
+  if(!isOpen&&canSeeCost()){const s=reloadSimStats(vals[0].carrier);if(vals.length===1&&s.complete)msg+=` · Profit ${fmtInt(s.profit)} (${fmtPct(s.pct)})`;}
+  toast(msg,'success'); reloadRefresh();
+ },'Save');
 }
-function showReloadTopupModal(){
- openModal('💳 Reload Top-up / Recharge SIM Balance', `<div class="form-grid"><div class="credit-notice">Top-up purchases add balance to the selected SIM and deduct the amount from cashier cash.</div>${field('Network / SIM',`<select id="rt-carrier" class="ios-input">${RELOAD_CARRIERS.map(c=>`<option>${c}</option>`).join('')}</select>`,true)}${field('Top-up Amount (LKR)','<input id="rt-amount" class="ios-input" type="number" min="1" step="0.01" placeholder="1000">',true)}${field('Note / Reference','<input id="rt-note" class="ios-input" placeholder="e.g. top-up receipt number">')}</div>`,()=>{
-  const carrier=document.getElementById('rt-carrier').value,amount=Number(document.getElementById('rt-amount').value||0),note=document.getElementById('rt-note').value.trim(); if(amount<=0){toast('Enter valid top-up amount','error');return false;}
-  const cs=getCashSummary(); if(amount>cs.balance+0.01){if(!confirm(`Recorded cashier cash is ${fmtInt(cs.balance)}. Record top-up anyway?`))return false;}
+function showReloadTopupModal(carrier){
+ openModal('💳 Add Credit to SIM', `<div class="form-grid"><div class="credit-notice">Credit bought for the SIM is added to its balance and deducted from cashier cash.</div>${field('Network / SIM',`<select id="rt-carrier" class="ios-input">${RELOAD_CARRIERS.map(c=>`<option ${c===carrier?'selected':''}>${c}</option>`).join('')}</select>`,true)}${field('Credit Amount (LKR)','<input id="rt-amount" class="ios-input" type="number" min="1" step="0.01" placeholder="1000" autofocus>',true)}${field('Note / Reference','<input id="rt-note" class="ios-input" placeholder="e.g. receipt number">')}</div>`,()=>{
+  const carrier=document.getElementById('rt-carrier').value,amount=Number(document.getElementById('rt-amount').value||0),note=document.getElementById('rt-note').value.trim(); if(amount<=0){toast('Enter a valid amount','error');return false;}
+  const cs=getCashSummary(); if(amount>cs.balance+0.01){if(!confirm(`Recorded cashier cash is ${fmtInt(cs.balance)}. Record anyway?`))return false;}
   DB.reload_entries.push({id:nextId('reload_entries'),type:'topup',carrier,amount,note,created_at:now(),user_id:currentUser?.id||null});
-  DB.cash_transactions.push({id:nextId('cash_transactions'),type:'cash_out',amount,note:`Reload top-up - ${carrier}${note?' · '+note:''}`,category:'Reload Top-up',created_at:now(),user_id:currentUser?.id||null,ref_type:'reload_topup',ref_id:DB.reload_entries[DB.reload_entries.length-1].id});
-  save();toast(`${carrier} top-up recorded; cashier cash reduced`,'success');renderReload(document.getElementById('content'));
- },'Record Top-up');
+  DB.cash_transactions.push({id:nextId('cash_transactions'),type:'cash_out',amount,note:`Reload credit - ${carrier}${note?' · '+note:''}`,category:'Reload Top-up',created_at:now(),user_id:currentUser?.id||null,ref_type:'reload_topup',ref_id:DB.reload_entries[DB.reload_entries.length-1].id});
+  save();toast(`${carrier} credit added; cashier cash reduced`,'success');reloadRefresh();
+ },'Add Credit');
 }
-let reloadFilters={from:today(),to:today(),carrier:'all',type:'all',min:'',max:''};
+function reloadPickSim(c){ reloadSim=c; reloadRefresh(); }
+function reloadHistRows(){
+ const t=today(); let from='';
+ if(reloadHist.range==='today')from=t;
+ else if(reloadHist.range==='7d'||reloadHist.range==='30d'){const d=new Date();d.setDate(d.getDate()-(reloadHist.range==='7d'?6:29));from=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
+ return (DB.reload_entries||[]).filter(x=>(!from||(x.created_at||'').slice(0,10)>=from)&&(reloadHist.carrier==='all'||x.carrier===reloadHist.carrier)&&(reloadHist.type==='all'||x.type===reloadHist.type)).sort((a,b)=>(b.created_at||'').localeCompare(a.created_at||''));
+}
+function reloadSetHist(k,v){ reloadHist[k]=v; reloadRefreshHist(); }
+function reloadRefreshHist(){ const el=document.getElementById('rl-hist'); if(el) el.outerHTML=reloadHistoryHTML(); }
+function reloadHistoryHTML(){
+ const es=reloadHistRows(), H=reloadHist;
+ const head=`<div class="row" style="justify-content:space-between;gap:8px"><b class="small">🕘 Reload History <span class="muted">(${es.length})</span></b><div class="row" style="gap:6px"><button class="ios-pill ghost sm" onclick="exportReloadCSV()">⬇ CSV</button><button class="ios-pill ghost sm" onclick="reloadSetHist('open',${!H.open})">${H.open?'Hide ▴':'Show ▾'}</button></div></div>`;
+ if(!H.open) return `<div class="card rl-hist-card" id="rl-hist">${head}</div>`;
+ const chips=RELOAD_RANGES.map(([v,l])=>`<button class="chart-btn ${H.range===v?'active':''}" onclick="reloadSetHist('range','${v}')">${l}</button>`).join('');
+ const rows=es.length?es.map(x=>`<div class="rl-row"><div style="min-width:0"><div class="small strong">${esc(x.carrier||'-')} · ${esc(RELOAD_LABELS[x.type]||x.type)}</div><div class="muted" style="font-size:10.5px">${esc((x.created_at||'').slice(0,16).replace('T',' '))} · ${esc(DB.users.find(u=>u.id===x.user_id)?.name||'-')}${x.sale_id?` · <a href="#" onclick="event.preventDefault();showSaleById(${x.sale_id})">${esc(DB.sales.find(s=>s.id===x.sale_id)?.invoice_no||'Bill')}</a>`:(x.note?' · '+esc(x.note):'')}</div></div><b class="small ${x.type==='topup'?'warn':''}">${fmtInt(x.amount)}</b></div>`).join(''):'<p class="muted center small" style="padding:12px 0;margin:0">No records</p>';
+ return `<div class="card rl-hist-card" id="rl-hist">${head}<div class="rl-filters"><div class="chart-toggle">${chips}</div><select class="ios-input" onchange="reloadSetHist('carrier',this.value)"><option value="all">All SIMs</option>${RELOAD_CARRIERS.map(c=>`<option ${H.carrier===c?'selected':''}>${c}</option>`).join('')}</select><select class="ios-input" onchange="reloadSetHist('type',this.value)"><option value="all">All types</option>${Object.entries(RELOAD_LABELS).map(([v,l])=>`<option value="${v}" ${H.type===v?'selected':''}>${l}</option>`).join('')}</select></div><div class="rl-list">${rows}</div></div>`;
+}
 function renderReload(root){
- const d=today(),es=[...(DB.reload_entries||[])].filter(x=>{const dt=(x.created_at||'').slice(0,10);return (!reloadFilters.from||dt>=reloadFilters.from)&&(!reloadFilters.to||dt<=reloadFilters.to)&&(reloadFilters.carrier==='all'||x.carrier===reloadFilters.carrier)&&(reloadFilters.type==='all'||x.type===reloadFilters.type)&&(reloadFilters.min===''||Number(x.amount)>=Number(reloadFilters.min))&&(reloadFilters.max===''||Number(x.amount)<=Number(reloadFilters.max));}).sort((a,b)=>(b.created_at||'').localeCompare(a.created_at||''));
- const sum=reloadDaySummary(d); const byCarrier=RELOAD_CARRIERS.map(c=>{const esd=reloadEntriesFor(d).filter(x=>x.carrier===c);const sales=esd.filter(x=>x.type==='sale').reduce((a,x)=>a+Number(x.amount||0),0);const top=esd.filter(x=>x.type==='topup').reduce((a,x)=>a+Number(x.amount||0),0);const op=Number(esd.find(x=>x.type==='opening')?.amount||0),cl=Number(esd.find(x=>x.type==='closing')?.amount||0);const closed=esd.some(x=>x.type==='closing');return {c,sales,top,op,cl,profit:closed?sales-(op+top-cl):null,closed};});
- const labels={sale:'Reload Sale',topup:'Top-up',opening:'Opening Balance',closing:'Closing Balance'};
- root.innerHTML=`<div class="view-shell"><div class="page-head"><div><h1>📲 Reload Management</h1><p>Daily reload sales, SIM balances, top-ups and estimated profit</p></div><div class="head-actions"><button class="ios-pill blue sm" onclick="showReloadSaleModal()">➕ Sell Reload</button><button class="ios-pill teal sm" onclick="showReloadTopupModal()">💳 Top-up SIM</button></div></div><div class="view-scroll">
- <div class="stat-grid" style="margin-bottom:14px"><div class="stat"><div class="stat-icon">📲</div><div class="stat-label">Reload Sales Today</div><div class="stat-value">${fmtInt(sum.sales)}</div></div><div class="stat"><div class="stat-icon">💳</div><div class="stat-label">Top-ups Today</div><div class="stat-value warn">${fmtInt(sum.topups)}</div></div><div class="stat"><div class="stat-icon">📈</div><div class="stat-label">Estimated Profit</div><div class="stat-value success">${sum.hasClosing?fmtInt(sum.profit):'—'}</div><div class="stat-sub">${sum.hasClosing?'Based on opening + top-ups − closing':'Enter evening closing balances to calculate'}</div></div></div>
- <div class="card" style="margin-bottom:14px"><div class="row" style="justify-content:space-between;gap:8px;flex-wrap:wrap"><h3>Today's SIM Balances</h3><div class="head-actions"><button class="ios-pill ghost sm" onclick="showReloadBalanceModal('opening')">🌅 Opening balance</button><button class="ios-pill orange sm" onclick="showReloadBalanceModal('closing')">🌙 Closing balance</button></div></div><div class="table-wrap"><table><thead><tr><th>Network</th><th>Opening</th><th>Top-ups</th><th>Reload Sales</th><th>Closing</th><th>Profit*</th></tr></thead><tbody>${byCarrier.map(x=>`<tr><td><b>${x.c}</b></td><td>${fmtInt(x.op)}</td><td>${fmtInt(x.top)}</td><td>${fmtInt(x.sales)}</td><td>${x.closed?fmtInt(x.cl):'—'}</td><td class="${x.profit!==null&&x.profit>=0?'success':'warn'}">${x.profit===null?'—':fmtInt(x.profit)}</td></tr>`).join('')}</tbody></table></div><p class="muted small">* Profit is estimated as reload money collected minus balance consumed (opening + top-ups − closing). Set opening and closing balances for each SIM to get a useful figure.</p></div>
- <div class="card"><h3>Reload History & Filters</h3><div class="form-grid" style="grid-template-columns:repeat(auto-fit,minmax(145px,1fr));margin-bottom:12px"><div class="form-field"><label class="field-label">From date</label><input class="ios-input" type="date" value="${reloadFilters.from}" onchange="reloadFilters.from=this.value;renderReload(document.getElementById('content'))"></div><div class="form-field"><label class="field-label">To date</label><input class="ios-input" type="date" value="${reloadFilters.to}" onchange="reloadFilters.to=this.value;renderReload(document.getElementById('content'))"></div><div class="form-field"><label class="field-label">Network</label><select class="ios-input" onchange="reloadFilters.carrier=this.value;renderReload(document.getElementById('content'))"><option value="all">All networks</option>${RELOAD_CARRIERS.map(c=>`<option ${reloadFilters.carrier===c?'selected':''}>${c}</option>`).join('')}</select></div><div class="form-field"><label class="field-label">Entry type</label><select class="ios-input" onchange="reloadFilters.type=this.value;renderReload(document.getElementById('content'))"><option value="all">All types</option>${Object.entries(labels).map(([v,l])=>`<option value="${v}" ${reloadFilters.type===v?'selected':''}>${l}</option>`).join('')}</select></div><div class="form-field"><label class="field-label">Min amount</label><input class="ios-input" type="number" value="${reloadFilters.min}" placeholder="0" onchange="reloadFilters.min=this.value;renderReload(document.getElementById('content'))"></div><div class="form-field"><label class="field-label">Max amount</label><input class="ios-input" type="number" value="${reloadFilters.max}" placeholder="Any" onchange="reloadFilters.max=this.value;renderReload(document.getElementById('content'))"></div></div><div class="table-wrap"><table><thead><tr><th>Date / Time</th><th>Network</th><th>Type</th><th>Amount</th><th>Bill / Note</th><th>Staff</th></tr></thead><tbody>${es.length?es.map(x=>`<tr><td>${esc(x.created_at||'')}</td><td>${esc(x.carrier||'-')}</td><td>${esc(labels[x.type]||x.type)}</td><td class="strong">${fmtInt(x.amount)}</td><td>${x.sale_id?`<button class="ios-pill ghost sm" onclick="showSaleById(${x.sale_id})">${esc(DB.sales.find(s=>s.id===x.sale_id)?.invoice_no||'Bill')}</button>`:esc(x.note||'-')}</td><td>${esc(DB.users.find(u=>u.id===x.user_id)?.name||'-')}</td></tr>`).join(''):'<tr><td colspan="6" class="muted center">No reload records for these filters.</td></tr>'}</tbody></table></div><div class="row" style="justify-content:space-between;margin-top:10px"><span class="muted small">${es.length} records · total ${fmtInt(es.reduce((a,x)=>a+Number(x.amount||0),0))}</span><button class="ios-pill ghost sm" onclick="exportReloadCSV()">⬇ Export CSV</button></div></div></div></div>`;
+ const prev=root.querySelector('.view-scroll')?.scrollTop||0, cs=canSeeCost();
+ if(!reloadSim||!RELOAD_CARRIERS.includes(reloadSim)) reloadSim=RELOAD_CARRIERS[0];
+ const sum=reloadDaySummary(), sel=sum.stats.find(x=>x.c===reloadSim);
+ const simCard=x=>`<div class="rl-sim ${x.c===reloadSim?'sel':''}" onclick="reloadPickSim('${x.c}')"><div class="rl-sim-name">${x.c}</div><div class="rl-sim-bal">${x.balance===null?'—':fmtInt(x.balance)}</div><div class="muted" style="font-size:10.5px">${x.hasCl?'Closing balance':x.hasOp?'Balance (est.)':'Opening not set'}</div>${cs&&x.complete?`<div class="small strong ${x.profit>=0?'success':'danger-c'}" style="margin-top:3px">Profit ${fmtInt(x.profit)} · ${fmtPct(x.pct)}</div>`:''}</div>`;
+ const hint=!sel.hasOp?'Step 1 — enter this SIM’s opening balance.':!sel.hasCl?'Add credit whenever you recharge the SIM. In the evening enter the closing balance.':(cs?'All set — profit calculated.':'Closing balance saved.');
+ const cell=(l,v,cls='')=>`<div class="rl-cell"><div class="muted" style="font-size:10.5px">${l}</div><div class="strong ${cls}">${v}</div></div>`;
+ root.innerHTML=`<div class="view-shell"><div class="page-head"><div><h1>📲 Reload</h1><p>SIM balances &amp; daily reload${cs?' profit':''}</p></div></div><div class="view-scroll">
+ <div class="rl-sims">${sum.stats.map(simCard).join('')}</div>
+ <div class="card" style="margin-bottom:12px"><div class="row" style="justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:8px"><h3 style="margin:0">${sel.c}</h3><span class="muted small">${hint}</span></div>
+  <div class="rl-cells">${cell('Opening',sel.hasOp?fmtInt(sel.op):'—')}${cell('Credit added',fmtInt(sel.top))}${cell('Reload sales',fmtInt(sel.sales))}${cell('Closing',sel.hasCl?fmtInt(sel.cl):'—')}${cs?cell('Profit',sel.complete?fmtInt(sel.profit):'—',sel.complete?(sel.profit>=0?'success':'danger-c'):''):''}${cs?cell('Profit %',sel.complete?fmtPct(sel.pct):'—',sel.complete?(sel.profit>=0?'success':'danger-c'):''):''}</div>
+  <div class="row" style="gap:8px;margin-top:12px;flex-wrap:wrap"><button class="ios-pill ghost sm" onclick="showReloadBalanceModal('opening','${sel.c}')">🌅 Opening</button><button class="ios-pill teal sm" onclick="showReloadTopupModal('${sel.c}')">💳 Add Credit</button><button class="ios-pill orange sm" onclick="showReloadBalanceModal('closing','${sel.c}')">🌙 Closing</button></div></div>
+ <div class="stat-grid" style="margin-bottom:12px"><div class="stat"><div class="stat-label">Reload Sales Today</div><div class="stat-value">${fmtInt(sum.sales)}</div></div><div class="stat"><div class="stat-label">Credit Added Today</div><div class="stat-value warn">${fmtInt(sum.topups)}</div></div>${cs?`<div class="stat"><div class="stat-label">Total Profit</div><div class="stat-value success">${sum.hasClosing?fmtInt(sum.profit):'—'}</div><div class="stat-sub">${sum.hasClosing?fmtPct(sum.pct)+' of reload sales':'enter opening &amp; closing for every SIM used'}</div></div>`:''}</div>
+ ${reloadHistoryHTML()}
+ </div></div>`;
+ if(prev){const sv=root.querySelector('.view-scroll');if(sv)sv.scrollTop=prev;}
 }
 function showSaleById(id){const s=DB.sales.find(x=>x.id===id);if(s)showSaleCompleteModal(id);else toast('Bill not found','error');}
 function exportReloadCSV(){const rows=[['DateTime','Carrier','Type','Amount','Note','SaleID','User'],...(DB.reload_entries||[]).map(x=>[x.created_at,x.carrier,x.type,x.amount,x.note||'',x.sale_id||'',DB.users.find(u=>u.id===x.user_id)?.name||''])];const csv=rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));a.download=`reload_history_${today()}.csv`;a.click();}
