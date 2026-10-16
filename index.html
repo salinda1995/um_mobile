@@ -373,67 +373,6 @@ body.sidebar-hidden .content{padding-left:54px}
 .ord-item input[type="checkbox"]{width:18px;height:18px;cursor:pointer;flex-shrink:0;accent-color:var(--blue);margin-top:2px}
 .ord-item-info{flex:1;min-width:0}
 .ord-item-actions{display:flex;gap:4px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
-
-/* ===== FIX: styles for pages that used unstyled classes (Staff, Expenses, Cash Closing, Reload) ===== */
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
-.stat-card{background:var(--glass);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--glass-border);border-radius:var(--radius-xl);padding:15px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden;transition:all .25s cubic-bezier(.4,0,.2,1)}
-.stat-card:hover{transform:translateY(-2px);border-color:var(--glass-border-strong)}
-.table-wrap{background:var(--glass);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--glass-border);border-radius:var(--radius-lg);overflow-x:auto;-webkit-overflow-scrolling:touch;box-shadow:var(--shadow-sm);margin-bottom:10px}
-.table-wrap table,table.data-table{width:100%;border-collapse:collapse;font-size:12px}
-.table-wrap thead th,.data-table thead th{text-align:left;padding:11px 14px;color:var(--text-3);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;background:var(--glass-hover);border-bottom:1px solid var(--separator);white-space:nowrap}
-.table-wrap tbody td,.data-table tbody td{padding:11px 14px;border-bottom:1px solid var(--separator);vertical-align:middle}
-.table-wrap tbody tr:last-child td,.data-table tbody tr:last-child td{border-bottom:none}
-.table-wrap tbody tr:hover,.data-table tbody tr:hover{background:var(--glass-hover)}
-.table-wrap .strong,.data-table .strong{font-variant-numeric:tabular-nums}
-.list-row{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.empty-state{text-align:center;color:var(--text-3);padding:28px 12px;font-size:12px}
-.sm{font-size:11px}
-.page-head .head-actions{justify-content:flex-end}
-
-/* ===== SIM balance cards (Reload tab) ===== */
-.sim-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-bottom:14px}
-.sim-card{position:relative;background:var(--glass);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--glass-border);border-radius:var(--radius-xl);padding:14px 15px 12px 19px;overflow:hidden;box-shadow:var(--shadow-sm);transition:all .25s cubic-bezier(.4,0,.2,1)}
-.sim-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--sim,var(--blue))}
-.sim-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
-.sim-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px}
-.sim-name{font-weight:700;font-size:13px;display:flex;align-items:center;gap:7px}
-.sim-dot{width:9px;height:9px;border-radius:50%;background:var(--sim,var(--blue));box-shadow:0 0 8px var(--sim,var(--blue))}
-.sim-tag{font-size:9.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:999px}
-.sim-tag.ok{background:rgba(48,209,88,.18);color:var(--green)}
-.sim-tag.low{background:rgba(255,159,10,.2);color:var(--orange)}
-.sim-tag.empty{background:rgba(255,69,58,.2);color:var(--red)}
-.sim-tag.none{background:rgba(255,255,255,.1);color:var(--text-3)}
-.sim-bal{font-size:25px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1.1}
-.sim-bal small{font-size:11px;font-weight:700;color:var(--text-3);margin-right:5px;letter-spacing:.02em}
-.sim-card.low .sim-bal{color:var(--orange)}
-.sim-card.empty .sim-bal{color:var(--red)}
-.sim-card.none .sim-bal{color:var(--text-3);font-size:18px}
-.sim-sub{font-size:10.5px;color:var(--text-3);margin-top:6px;line-height:1.55;min-height:32px}
-.sim-actions{display:flex;gap:6px;margin-top:8px}
-.sim-msg{border-radius:var(--radius-md);padding:10px 12px;font-size:12px;line-height:1.55;font-weight:600;margin-top:2px}
-.sim-msg.ok{background:rgba(100,210,255,.12);border:1px solid rgba(100,210,255,.4);color:var(--teal)}
-.sim-msg.bad{background:rgba(255,69,58,.14);border:1.5px solid rgba(255,69,58,.6);color:#ff6b60}
-[data-theme="light"] .sim-msg.bad{color:#c92a20}
-.sim-msg.unk{background:rgba(255,159,10,.14);border:1px solid rgba(255,159,10,.5);color:var(--orange)}
-.sim-msg b{font-weight:800}
-.ios-input.invalid{border-color:var(--red)!important;box-shadow:0 0 0 3px rgba(255,69,58,.22)!important}
-
-
-/* ===== Reload v2: quick amount chips + low balance alert ===== */
-.rs-chips{display:flex;flex-wrap:wrap;gap:7px;margin:-2px 0 2px}
-.rs-chip{border:1px solid var(--glass-border-strong,var(--glass-border));background:var(--glass-hover);color:var(--text);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .15s;font-variant-numeric:tabular-nums}
-.rs-chip:hover{border-color:var(--blue);transform:translateY(-1px)}
-.rs-chip:active{transform:scale(.95)}
-.rs-chip.active{background:var(--blue);border-color:var(--blue);color:#fff}
-.rs-chip.freq{border-style:dashed}
-.rs-chip.over{opacity:.38;text-decoration:line-through}
-.sim-alert{display:flex;align-items:center;gap:10px;background:rgba(255,159,10,.14);border:1px solid rgba(255,159,10,.55);color:var(--orange);border-radius:var(--radius-md);padding:9px 14px;margin:0 0 12px;font-size:12px;line-height:1.7;cursor:pointer;flex-shrink:0}
-.sim-alert.crit{background:rgba(255,69,58,.14);border-color:rgba(255,69,58,.6);color:var(--red)}
-.sim-alert:hover{filter:brightness(1.1)}
-.sim-alert-ic{font-size:18px}
-.sim-alert-chip{display:inline-block;background:var(--glass-hover);border-left:3px solid var(--sim,#888);color:var(--text);padding:1px 9px;border-radius:6px;font-weight:700;font-size:11px}
-.row.gap{display:flex;align-items:center;gap:8px}
-
 @media (max-width: 768px){
   html,body{overflow:auto;height:auto;min-height:100%}
   .layout{padding:0;gap:0;height:auto;min-height:100vh;display:block}
@@ -468,9 +407,6 @@ body.sidebar-hidden .content{padding-left:54px}
   .stat-icon{font-size:18px;margin-bottom:6px}
   .ios-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
   .ios-table{min-width:560px}
-  .table-wrap table,table.data-table{min-width:560px}
-  .sim-grid{grid-template-columns:1fr 1fr;gap:8px}
-  .sim-bal{font-size:20px}
   .modal{padding:18px;max-height:92vh;border-radius:16px}
   .modal h2{font-size:15px}
   .modal-bg{padding:12px;align-items:flex-end}
@@ -519,6 +455,15 @@ body.sidebar-hidden .content{padding-left:54px}
   .page-head h1{font-size:17px}
   .mobile-tabs .mt-label{font-size:8.5px}
 }
+
+/* Firebase account gate + small Look Mobile footer */
+.auth-help{font-size:11px;line-height:1.55;color:var(--text-3);margin-top:10px;text-align:left}
+.auth-email{margin-bottom:9px}
+.pos-brand-footer{position:fixed;right:10px;bottom:5px;z-index:1200;font-size:9px;line-height:1.3;color:var(--text-3);background:rgba(20,20,28,.72);border:1px solid var(--glass-border);border-radius:999px;padding:4px 8px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.pos-brand-footer a{color:var(--text-2);text-decoration:none;font-weight:700}
+.pos-brand-footer a:hover{text-decoration:underline;color:var(--wa)}
+@media(max-width:768px){.pos-brand-footer{bottom:67px;right:8px;font-size:8.5px;padding:3px 7px}}
+
 </style>
 </head>
 <body>
@@ -526,6 +471,21 @@ body.sidebar-hidden .content{padding-left:54px}
 <div id="loading-screen" class="loading-screen">
   <div class="spinner"></div>
   <div>Loading your data...</div>
+</div>
+
+<div id="firebase-auth-screen" class="login-screen hidden">
+  <div class="login-card">
+    <div class="brand-icon">🔐</div>
+    <h1>Look Mobile POS</h1>
+    <p class="sub muted" style="margin-bottom:16px">Main Firebase account sign in</p>
+    <form id="firebase-auth-form" onsubmit="event.preventDefault();doFirebaseLogin();">
+      <input id="fb-email" class="ios-input auth-email" type="email" placeholder="Main account email" autocomplete="username" required>
+      <input id="fb-password" class="ios-input" type="password" placeholder="Firebase password" autocomplete="current-password" required>
+      <div id="firebase-auth-error" class="hidden small danger-c" style="margin-top:8px;text-align:left"></div>
+      <button id="firebase-auth-submit" class="ios-pill blue full" type="submit" style="margin-top:12px">Sign in securely</button>
+    </form>
+    <div class="auth-help">Use the Email/Password account created in Firebase Console → Authentication → Users. This is the main database account; after this, select your normal POS staff login.</div>
+  </div>
 </div>
 
 <div id="login-screen" class="login-screen hidden">
@@ -595,6 +555,7 @@ body.sidebar-hidden .content{padding-left:54px}
 <div id="modal-root"></div>
 <div id="receipt"></div>
 <div id="firebase-badge" class="firebase-badge hidden"><span class="fb-dot"></span><span id="fb-badge-text">Firebase</span></div>
+<a class="pos-brand-footer" href="https://wa.me/94756947700?text=Hi%20Look%20Mobile!" target="_blank" rel="noopener noreferrer" aria-label="Contact Look Mobile on WhatsApp">pos-lookmobile · 0756947700 · WhatsApp</a>
 
 <script>
 /* ═══════════════════════════════════════════════════════════════
@@ -614,6 +575,7 @@ const firebaseConfig = {
   appId: "1:874931756731:web:be4e8c871f1ba3f24b939e"
 };
 firebase.initializeApp(firebaseConfig);
+const fbAuth = firebase.auth();
 const fbDB = firebase.database();
 const fbRef = fbDB.ref('pos_data');
 const fbResetRef = fbDB.ref('pos_reset_token');
@@ -788,7 +750,7 @@ function loadSafetyBackup() { try { const r = localStorage.getItem(LS_SAFE_KEY);
    PUSH TO FIREBASE — diff-based, atomic, conflict-safe
    ═══════════════════════════════════════════════════════════════ */
 async function pushToFirebase() {
-  if (syncing || resetting || !DB || !isValidDB(DB)) return;
+  if (!fbAuth.currentUser || syncing || resetting || !DB || !isValidDB(DB)) return;
   if (!lastSyncedDB) lastSyncedDB = deepClone(DB);
   syncing = true;
   const icon = document.getElementById('sync-icon');
@@ -909,8 +871,13 @@ async function loadFromServer() {
   } catch (e) {
     console.error('Load failed:', e);
     fbConnected = false;
-    /* Offline fallback */
-    if (isValidDB(DB)) { updateStorageStatus('offline-pending'); return { ok: true, hasData: true, offline: true }; }
+    /* Never reveal cached POS data when Firebase explicitly denies this account. */
+    const loadErr = String((e && (e.message || e.code)) || e);
+    if (/permission_denied|permission denied|insufficient permissions|not authorized/i.test(loadErr)) {
+      return { ok: false, error: 'Firebase permission denied. Check that this is the registered main account and its UID matches your Database Rules.' };
+    }
+    /* Offline fallback is allowed only for an authenticated account without an explicit permission denial. */
+    if (fbAuth.currentUser && isValidDB(DB)) { updateStorageStatus('offline-pending'); return { ok: true, hasData: true, offline: true }; }
     const backup = loadSafetyBackup();
     if (isValidDB(backup)) { DB = backup; migrateDB(); return { ok: true, hasData: true, offline: true, restored: true }; }
     return { ok: false, error: e.message };
@@ -1055,6 +1022,7 @@ function updateStorageStatus(state) {
 
 /* ═══ MANUAL SYNC BUTTON ═══ */
 async function manualSync() {
+  if (!fbAuth.currentUser) { toast('Firebase sign-in required','error'); return; }
   if (resetting) return;
   if (syncing) { toast('Sync already running', 'info', 1500); return; }
   if (!DB || !isValidDB(DB)) { toast('❌ Data invalid', 'error'); return; }
@@ -1388,6 +1356,38 @@ function showLogin() { document.getElementById('loading-screen').classList.add('
 function renderLoginUsers() { const w = document.getElementById('login-user-list'); if (!w) return; const u = DB.users.filter(x => x.active); if (!u.length) { w.innerHTML = '<p class="muted center small">No active users</p>'; return; } w.innerHTML = u.map(x => { const av = x.photo ? `<img src="${x.photo}" alt="">` : esc((x.name||x.username).charAt(0).toUpperCase()); return `<div class="login-user-card" onclick="selectLoginUser(${x.id})"><div class="login-user-avatar">${av}</div><div style="flex:1;min-width:0"><div class="strong" style="font-size:13px">${esc(x.name)}</div><div class="muted small">@${esc(x.username)} · ${esc(x.role)}</div></div><span style="color:var(--blue);font-size:16px">›</span></div>`; }).join(''); }
 function selectLoginUser(id) { const u = DB.users.find(x=>x.id===id); if (!u) return; document.getElementById('login-user').value = u.username; document.getElementById('login-user-list-wrap').classList.add('hidden'); document.getElementById('login-pass-wrap').classList.remove('hidden'); document.getElementById('login-selected-user').textContent = `Sign in as ${u.name}`; setTimeout(()=>document.getElementById('login-pass').focus(), 100); }
 function backToUserList() { document.getElementById('login-user-list-wrap').classList.remove('hidden'); document.getElementById('login-pass-wrap').classList.add('hidden'); document.getElementById('login-pass').value = ''; document.getElementById('login-error').classList.add('hidden'); renderLoginUsers(); }
+async function doFirebaseLogin() {
+  const email = (document.getElementById('fb-email')?.value || '').trim();
+  const password = document.getElementById('fb-password')?.value || '';
+  const err = document.getElementById('firebase-auth-error');
+  const btn = document.getElementById('firebase-auth-submit');
+  if (err) { err.classList.add('hidden'); err.textContent = ''; }
+  if (!email || !password) { if (err) { err.textContent = 'Email and password are required.'; err.classList.remove('hidden'); } return; }
+  if (btn) { btn.disabled = true; btn.textContent = 'Signing in…'; }
+  try {
+    await fbAuth.signInWithEmailAndPassword(email, password);
+    /* onAuthStateChanged starts loading the POS only after Firebase confirms auth */
+  } catch (e) {
+    let message = e.message || 'Sign in failed.';
+    if (e.code === 'auth/invalid-credential' || e.code === 'auth/wrong-password' || e.code === 'auth/user-not-found') message = 'Email or password is incorrect.';
+    else if (e.code === 'auth/too-many-requests') message = 'Too many attempts. Please wait and try again.';
+    else if (e.code === 'auth/network-request-failed') message = 'Network error. Check your internet connection.';
+    if (err) { err.textContent = message; err.classList.remove('hidden'); }
+  } finally { if (btn) { btn.disabled = false; btn.textContent = 'Sign in securely'; } }
+}
+
+function showFirebaseAuth() {
+  document.getElementById('loading-screen')?.classList.add('hidden');
+  document.getElementById('app-layout')?.classList.add('hidden');
+  document.getElementById('login-screen')?.classList.add('hidden');
+  document.getElementById('firebase-auth-screen')?.classList.remove('hidden');
+  const p = document.getElementById('fb-password'); if (p) p.value = '';
+}
+
+function showLogin() { document.getElementById('loading-screen').classList.add('hidden'); document.getElementById('firebase-auth-screen')?.classList.add('hidden'); document.getElementById('login-screen').classList.remove('hidden'); document.getElementById('app-layout').classList.add('hidden'); document.getElementById('login-user-list-wrap').classList.remove('hidden'); document.getElementById('login-pass-wrap').classList.add('hidden'); document.getElementById('login-pass').value = ''; document.getElementById('login-error').classList.add('hidden'); renderLoginUsers(); }
+function renderLoginUsers() { const w = document.getElementById('login-user-list'); if (!w || !DB) return; const u = DB.users.filter(x => x.active); if (!u.length) { w.innerHTML = '<p class="muted center small">No active users</p>'; return; } w.innerHTML = u.map(x => { const av = x.photo ? `<img src="${x.photo}" alt="">` : esc((x.name||x.username).charAt(0).toUpperCase()); return `<div class="login-user-card" onclick="selectLoginUser(${x.id})"><div class="login-user-avatar">${av}</div><div style="flex:1;min-width:0"><div class="strong" style="font-size:13px">${esc(x.name)}</div><div class="muted small">@${esc(x.username)} · ${esc(x.role)}</div></div><span style="color:var(--blue);font-size:16px">›</span></div>`; }).join(''); }
+function selectLoginUser(id) { const u = DB.users.find(x=>x.id===id); if (!u) return; document.getElementById('login-user').value = u.username; document.getElementById('login-user-list-wrap').classList.add('hidden'); document.getElementById('login-pass-wrap').classList.remove('hidden'); document.getElementById('login-selected-user').textContent = `Sign in as ${u.name}`; setTimeout(()=>document.getElementById('login-pass').focus(), 100); }
+function backToUserList() { document.getElementById('login-user-list-wrap').classList.remove('hidden'); document.getElementById('login-pass-wrap').classList.add('hidden'); document.getElementById('login-pass').value = ''; document.getElementById('login-error').classList.add('hidden'); renderLoginUsers(); }
 function doLogin() {
   const u = document.getElementById('login-user').value.trim().toLowerCase();
   const p = document.getElementById('login-pass').value;
@@ -1397,6 +1397,7 @@ function doLogin() {
   if (!user.active) { err.textContent = 'Account disabled'; err.classList.remove('hidden'); return; }
   currentUser = user; sessionStorage.setItem('pos_user_id', user.id);
   document.getElementById('loading-screen').classList.add('hidden');
+  document.getElementById('firebase-auth-screen').classList.add('hidden');
   document.getElementById('login-screen').classList.add('hidden');
   document.getElementById('app-layout').classList.remove('hidden');
   document.getElementById('login-pass').value = '';
@@ -1404,7 +1405,7 @@ function doLogin() {
   currentView = firstAllowedView(); render();
   toast(`Welcome, ${user.name}!`, 'success');
 }
-function doLogout() { if (!confirm('Sign out?')) return; currentUser = null; sessionStorage.removeItem('pos_user_id'); document.getElementById('app-layout').classList.add('hidden'); document.getElementById('login-screen').classList.remove('hidden'); showLogin(); }
+async function doLogout() { if (!confirm('Sign out of POS and Firebase?')) return; currentUser = null; sessionStorage.removeItem('pos_user_id'); document.getElementById('app-layout').classList.add('hidden'); document.getElementById('login-screen').classList.add('hidden'); document.getElementById('loading-screen').classList.remove('hidden'); document.getElementById('loading-screen').innerHTML = '<div class="spinner"></div><div>Signing out securely…</div>'; try { await fbAuth.signOut(); } catch(e) { console.error('Firebase sign out failed', e); showFirebaseAuth(); } }
 function showSwitchAccount() { closeMobileSidebar(); const users = DB.users.filter(u => u.active); const rows = users.map(u => { const isMe = currentUser && u.id === currentUser.id; const av = u.photo ? `<img src="${u.photo}" style="width:100%;height:100%;object-fit:cover">` : esc((u.name||u.username).charAt(0).toUpperCase()); return `<div class="user-select-row ${isMe?'current':''}" ${isMe?'':`onclick="promptSwitchTo(${u.id})"`}><div class="user-select-avatar">${av}</div><div class="user-select-info"><div class="strong" style="font-size:13px">${esc(u.name)}</div><div class="muted small">@${esc(u.username)} · ${esc(u.role)}${isMe?' · <span class="success">current</span>':''}</div></div>${isMe ? '<span class="badge badge-done">Active</span>' : '<button class="ios-pill blue sm">Switch</button>'}</div>`; }).join(''); openModal('Switch Account', `<div class="form-grid" style="gap:8px">${rows}</div>`, () => {}, 'Close'); }
 function promptSwitchTo(userId) { const u = DB.users.find(x=>x.id===userId); if (!u) return; openModal(`Switch to ${u.name}`, `<div class="form-grid">${field('Password', `<input id="switch-pass" class="ios-input" type="password" placeholder="Password">`, true)}</div>`, () => { const pass = document.getElementById('switch-pass').value; if (hashPassword(pass) !== u.password) { toast('Wrong password','error'); return false; } currentUser = u; sessionStorage.setItem('pos_user_id', u.id); updateUserBox(); buildNav(); buildMobileTabs(); currentView = firstAllowedView(); render(); toast(`Switched to ${u.name}`,'success'); }, 'Switch'); }
 function updateUserBox() { if (!currentUser) return; document.getElementById('user-name-display').textContent = currentUser.name; document.getElementById('user-role-display').textContent = currentUser.role; const av = document.getElementById('user-avatar'); if (currentUser.photo) av.innerHTML = `<img src="${currentUser.photo}" alt="">`; else av.textContent = (currentUser.name || currentUser.username).charAt(0).toUpperCase(); }
@@ -1457,7 +1458,7 @@ function importJSON() {
 }
 
 /* ═══ VIEWS ═══ */
-const views = { dashboard:withSimAlert(renderDashboard), sales:withSimAlert(renderSales), reload:renderReload,  phonestock:renderPhoneStock, stock:renderStock, repairs:renderRepairs, shoprepair:renderShopRepair, customers:renderCustomers, orders:renderOrders, suppliers:renderSuppliers, staff:renderStaff, expenses:renderExpenses, cashclosing:renderCashClosing, reports:renderReports, billsearch:renderBillSearch, settings:renderSettings };
+const views = { dashboard:renderDashboard, sales:renderSales, reload:renderReload,  phonestock:renderPhoneStock, stock:renderStock, repairs:renderRepairs, shoprepair:renderShopRepair, customers:renderCustomers, orders:renderOrders, suppliers:renderSuppliers, staff:renderStaff, expenses:renderExpenses, cashclosing:renderCashClosing, reports:renderReports, billsearch:renderBillSearch, settings:renderSettings };
 let currentView = 'dashboard';
 function buildNav() { const nav = document.getElementById('nav'); const perms = ROLE_PERMS[currentUser.role]||[]; nav.innerHTML = perms.map(k => { const m = VIEW_META[k]; return `<a data-view="${k}" class="${k===currentView?'active':''}"><span class="nav-icon">${m.icon}</span><span>${m.label}</span></a>`; }).join(''); }
 function buildMobileTabs() {
@@ -1940,352 +1941,55 @@ function addReloadToCart() {
 }
 /* ═══ RELOAD MANAGEMENT ═══ */
 const RELOAD_CARRIERS = ['Airtel','Dialog','Mobitel','Hutch'];
-/* ================= RELOAD MANAGEMENT (v2) ================= */
-const SIM_COLORS={Airtel:'#FF453A',Dialog:'#0A84FF',Mobitel:'#30D158',Hutch:'#FF9F0A'};
-const SIM_LOW_LIMIT=500;
-const SIM_DEFAULT_QUICK=[50,100,200,300,500,1000];
-const RELOAD_LABELS={sale:'Reload Sale',topup:'Top-up',opening:'Opening Balance',closing:'Closing Balance',balance:'Balance Set'};
-function fmtMoney(n){return (Number(n)||0).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:2});}
-function fmtD(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
-function canManageReload(){return !!currentUser&&(currentUser.role==='admin'||currentUser.role==='manager');}
-function normNum(s){return String(s||'').replace(/[^\d+]/g,'');}
-function rr(){renderReload(document.getElementById('content'));}
-function activeReloads(){return (DB.reload_entries||[]).filter(x=>!x.cancelled);}
-
-/* ---- per-SIM settings: low limit, commission %, quick amounts ---- */
-function reloadCfg(){ if(!DB.settings) DB.settings={}; const c=DB.settings.reload_cfg||(DB.settings.reload_cfg={}); c.low=c.low||{}; c.comm=c.comm||{}; c.quick=c.quick||{}; return c; }
-function simLow(c){const v=reloadCfg().low[c]; return (v===undefined||v===null||v===''||isNaN(v))?SIM_LOW_LIMIT:Number(v);}
-function simComm(c){const v=Number(reloadCfg().comm[c]); return isNaN(v)?0:v;}
-function simQuick(c){const q=reloadCfg().quick[c]; const a=Array.isArray(q)?q.map(Number).filter(n=>n>0):[]; return a.length?a:SIM_DEFAULT_QUICK;}
-function simFrequent(c,n=3){
-  const cut=fmtD(new Date(Date.now()-90*864e5)), freq={}, known=new Set(simQuick(c));
-  activeReloads().filter(x=>x.type==='sale'&&x.carrier===c&&(x.created_at||'').slice(0,10)>=cut).forEach(x=>{const a=Number(x.amount);freq[a]=(freq[a]||0)+1;});
-  return Object.keys(freq).map(Number).filter(a=>!known.has(a)&&freq[a]>=2).sort((a,b)=>freq[b]-freq[a]).slice(0,n).sort((a,b)=>a-b);
-}
-
-/* ---- balance: last anchor (opening / past closing / manual set) + top-ups - reload sales after it ---- */
-function simBalance(carrier){
-  const es=activeReloads().filter(x=>x.carrier===carrier&&x.created_at), td=today();
-  const anchorTime=x=>{const d=x.created_at.slice(0,10); if(x.type==='opening')return d+' 00:00:00'; if(x.type==='closing')return d<td?d+' 23:59:59':null; if(x.type==='balance')return x.created_at; return null;};
-  let anchor=null,at='';
-  es.forEach(x=>{const t=anchorTime(x); if(!t)return; const tie=(t===at&&anchor&&(x.updated_at||x.created_at)>(anchor.updated_at||anchor.created_at)); if(t>at||tie){anchor=x;at=t;}});
-  let top=0,sold=0;
-  es.forEach(x=>{ if(anchor&&x.created_at<=at)return; const a=Number(x.amount||0); if(x.type==='topup')top+=a; else if(x.type==='sale')sold+=a; });
-  const base=anchor?Number(anchor.amount||0):0;
-  return {carrier,hasBase:!!anchor,base,top,sold,balance:base+top-sold,baseType:anchor?anchor.type:null};
-}
-function reloadInCart(carrier){return (typeof cart!=='undefined'?cart:[]).filter(i=>i.type==='reload'&&i.carrier===carrier).reduce((a,i)=>a+Number(i.price||0)*Number(i.qty||1),0);}
-function reloadCheck(carrier,amount){
-  const b=simBalance(carrier), inCart=reloadInCart(carrier);
-  if(!b.hasBase) return {ok:true,unknown:true,bal:b.balance,inCart,avail:0,short:0};
-  const avail=b.balance-inCart;
-  return {ok:amount<=avail+0.001,unknown:false,bal:b.balance,inCart,avail,short:Math.max(0,amount-avail)};
-}
-function reloadMsgHTML(carrier,amount){
-  const r=reloadCheck(carrier,amount);
-  if(r.unknown) return `<div class="sim-msg unk">⚠️ ${esc(carrier)} SIM balance set කරල නෑ. Reload tab එකේ <b>Opening / Set Balance</b> දාන්න — එතකොට balance check වෙනවා.</div>`;
-  const cartNote=r.inCart>0?` <span style="font-weight:500">(Bill එකේ දැනටමත් ${fmtMoney(r.inCart)} reload තියෙනවා)</span>`:'';
-  if(amount>0&&!r.ok) return `<div class="sim-msg bad">⛔ Balance මදී — <b>Reload දාන්න බෑ</b><br>${esc(carrier)} available: <b>LKR ${fmtMoney(Math.max(0,r.avail))}</b> · ඕන: LKR ${fmtMoney(amount)} · මදි: <b>LKR ${fmtMoney(r.short)}</b>${cartNote}</div>`;
-  const rem=r.avail-amount, lowNote=(amount>0&&rem<simLow(carrier))?`<br>⚠️ මේ reload එකෙන් පස්සේ balance එක <b>low</b> (limit ${fmtMoney(simLow(carrier))})`:'';
-  const after=amount>0?` · Reload පස්සේ: <b>LKR ${fmtMoney(rem)}</b>`:'';
-  return `<div class="sim-msg ok">💳 ${esc(carrier)} current balance: <b>LKR ${fmtMoney(r.bal)}</b>${after}${cartNote}${lowNote}</div>`;
-}
-function validateCartReloads(){
-  const by={}; (cart||[]).filter(i=>i.type==='reload').forEach(i=>{by[i.carrier]=(by[i.carrier]||0)+Number(i.price||0)*Number(i.qty||1);});
-  for(const c of Object.keys(by)){
-    const b=simBalance(c); if(!b.hasBase) continue;
-    if(by[c]>b.balance+0.001){toast(`${c} balance මදී! Available ${fmtMoney(b.balance)}, Bill එකේ reload ${fmtMoney(by[c])}. Reload ඉවත් කරන්න.`,'error',5000);return false;}
-  }
-  return true;
-}
-
-/* ---- Low balance alert banner (Dashboard + Sales) ---- */
-function simAlerts(){return RELOAD_CARRIERS.map(c=>({c,b:simBalance(c),low:simLow(c)})).filter(x=>x.b.hasBase&&x.b.balance<x.low);}
-function simAlertHTML(){
-  const a=simAlerts(); if(!a.length) return '';
-  const crit=a.some(x=>x.b.balance<=0);
-  return `<div class="sim-alert ${crit?'crit':''}" onclick="navigateTo('reload')" title="Open Reload tab"><span class="sim-alert-ic">${crit?'🚨':'⚠️'}</span><div><b>Low SIM balance</b> — ${a.map(x=>`<span class="sim-alert-chip" style="--sim:${SIM_COLORS[x.c]||'#888'}">${esc(x.c)}: ${x.b.balance<=0?'EMPTY':fmtMoney(x.b.balance)}</span>`).join(' ')}<span class="muted small"> · Top-up කරන්න</span></div></div>`;
-}
-function withSimAlert(fn){
-  return function(root){
-    fn.apply(this,arguments);
-    try{const html=simAlertHTML(); if(!html||!root)return; const sh=root.querySelector('.view-shell')||root; const d=document.createElement('div'); d.innerHTML=html; const el=d.firstElementChild; const ph=sh.querySelector('.page-head'); if(ph&&ph.parentNode===sh) ph.after(el); else sh.prepend(el);}catch(e){}
-  };
-}
-
-/* ---- Reload sale modal: quick amounts per SIM, number, balance check ---- */
-function lastReloadByNumber(num){
-  const n=normNum(num); if(n.length<7) return null;
-  const l=activeReloads().filter(x=>x.type==='sale'&&normNum(x.reload_number)===n).sort((a,b)=>(b.created_at||'').localeCompare(a.created_at||''));
-  return l[0]||null;
-}
-function rsRenderChips(){
-  const c=document.getElementById('rs-carrier')?.value, box=document.getElementById('rs-chips'); if(!c||!box) return;
-  const b=simBalance(c), avail=b.hasBase?b.balance-reloadInCart(c):Infinity, cur=Number(document.getElementById('rs-amount')?.value||0);
-  const chip=(a,star)=>`<button type="button" class="rs-chip ${a>avail+0.001?'over':''} ${star?'freq':''} ${a===cur?'active':''}" onclick="rsPick(${a})">${star?'⭐ ':''}${fmtMoney(a)}</button>`;
-  box.innerHTML=`<div class="rs-chips">${simQuick(c).map(a=>chip(a,false)).join('')}${simFrequent(c).map(a=>chip(a,true)).join('')}</div>`;
-}
-function rsPick(a){const i=document.getElementById('rs-amount'); if(i){i.value=a;} rsCheck(); }
-function rsCheck(){
-  const c=document.getElementById('rs-carrier'),a=document.getElementById('rs-amount'),box=document.getElementById('rs-info'); if(!c||!a||!box) return;
-  const amt=Number(a.value||0); box.innerHTML=reloadMsgHTML(c.value,amt);
-  a.classList.toggle('invalid',amt>0&&!reloadCheck(c.value,amt).ok); rsRenderChips();
-}
-function rsNumPick(){
-  const inp=document.getElementById('rs-number'); const last=lastReloadByNumber(inp.value); if(!last) return;
-  const c=document.getElementById('rs-carrier'), a=document.getElementById('rs-amount');
-  if(RELOAD_CARRIERS.includes(last.carrier)) c.value=last.carrier;
-  if(!a.value) a.value=Number(last.amount);
-  rsCheck(); toast(`පරණ reload එක: ${last.carrier} ${fmtMoney(last.amount)}`,'info',2000);
-}
-function showReloadSaleModal(pre){
-  pre=(pre&&typeof pre==='object'&&!pre.target)?pre:{};
-  const car=RELOAD_CARRIERS.includes(pre.carrier)?pre.carrier:RELOAD_CARRIERS[0];
-  const seen=new Set(), nums=activeReloads().filter(x=>x.type==='sale'&&normNum(x.reload_number).length>=7).sort((a,b)=>(b.created_at||'').localeCompare(a.created_at||'')).filter(x=>{const k=normNum(x.reload_number);if(seen.has(k))return false;seen.add(k);return true;}).slice(0,40);
-  openModal('📲 Add Reload to Bill', `<div class="form-grid">${field('Network / SIM', `<select id="rs-carrier" class="ios-input" onchange="rsCheck()">${RELOAD_CARRIERS.map(c=>`<option value="${c}" ${c===car?'selected':''}>${c}</option>`).join('')}</select>`, true)}<div id="rs-chips"></div>${field('Reload Amount (LKR)', `<input id="rs-amount" class="ios-input" type="number" min="1" step="1" placeholder="100" value="${pre.amount||''}" oninput="rsCheck()">`, true)}<div id="rs-info"></div>${field('Reload Number (optional)', `<input id="rs-number" class="ios-input" type="tel" inputmode="tel" placeholder="07X XXX XXXX" list="rs-nums" value="${esc(pre.number||'')}" oninput="rsNumPick()"><datalist id="rs-nums">${nums.map(x=>`<option value="${esc(x.reload_number)}">${esc(x.carrier)} · ${fmtMoney(x.amount)}</option>`).join('')}</datalist>`, false, 'පරණ number එකක් තෝරපුවාම SIM එකයි amount එකයි auto පිරෙනවා')}${field('Reference / Note', '<input id="rs-note" class="ios-input" placeholder="Optional">')}</div>`, () => {
-    const carrier=document.getElementById('rs-carrier').value, amount=Number(document.getElementById('rs-amount').value||0), note=document.getElementById('rs-note').value.trim(), number=document.getElementById('rs-number').value.trim();
+function showReloadSaleModal() {
+  openModal('📲 Add Reload to Bill', `<div class="form-grid"><div class="credit-notice">Select the SIM/network and enter the reload amount. It will appear on the customer bill and be tracked in Reload reports.</div>${field('Network / SIM', `<select id="rs-carrier" class="ios-input">${RELOAD_CARRIERS.map(c=>`<option value="${c}">${c}</option>`).join('')}</select>`, true)}${field('Reload Amount (LKR)', '<input id="rs-amount" class="ios-input" type="number" min="1" step="1" placeholder="100" autofocus>', true)}${field('Reference / Note', '<input id="rs-note" class="ios-input" placeholder="Optional">')}</div>`, () => {
+    const carrier=document.getElementById('rs-carrier').value, amount=Number(document.getElementById('rs-amount').value||0), note=document.getElementById('rs-note').value.trim();
     if(!RELOAD_CARRIERS.includes(carrier)||amount<=0){toast('Select network and enter valid amount','error');return false;}
-    const chk=reloadCheck(carrier,amount);
-    if(!chk.ok){rsCheck();toast(`${carrier} balance මදී — Reload දාන්න බෑ (available ${fmtMoney(Math.max(0,chk.avail))})`,'error',4500);return false;}
-    cart.push({type:'reload',carrier,desc:`Reload - ${carrier}${number?' ('+number+')':''}`,price:amount,qty:1,cost:0,warranty_months:0,reload_note:note,reload_number:number}); renderCart(); updateTotal(); toast(`${carrier} reload added to bill`,'success');
+    cart.push({type:'reload',carrier,desc:`Reload - ${carrier}`,price:amount,qty:1,cost:0,warranty_months:0,reload_note:note}); renderCart(); updateTotal(); toast(`${carrier} reload added to bill`,'success');
   }, 'Add to Bill');
-  setTimeout(()=>{rsCheck();const i=document.getElementById('rs-amount');if(i&&!pre.amount)i.focus();},60);
 }
-function repeatReload(id){const x=(DB.reload_entries||[]).find(e=>e.id===id); if(!x)return; if(typeof navigateTo==='function'&&currentView!=='sales'){navigateTo('sales');} setTimeout(()=>showReloadSaleModal({carrier:x.carrier,amount:Number(x.amount),number:x.reload_number||''}),120);}
-
-/* ---- Set / correct SIM balance ---- */
-function showSetSimBalanceModal(only){
-  const list=only?[only]:RELOAD_CARRIERS;
-  openModal('✏️ Set Current SIM Balance', `<div class="form-grid"><div class="credit-notice" style="background:rgba(100,210,255,.12);border-color:rgba(100,210,255,.5);color:var(--teal)">SIM එකේ දැන් තියෙන සැබෑ balance එක ගහන්න. මෙතැන් සිට reload sale / top-up වලින් balance එක auto අඩු/වැඩි වෙනවා. (History එකේ "Balance Set" ලෙස save වෙනවා)</div>${list.map(c=>{const b=simBalance(c);return field(c,`<input id="sb-${c}" class="ios-input" type="number" min="0" step="0.01" value="${b.hasBase?Number(b.balance.toFixed(2)):''}" placeholder="0.00">`)}).join('')}</div>`, ()=>{
-    let n=0;
-    for(const c of list){
-      const raw=document.getElementById('sb-'+c).value; if(raw==='') continue;
-      const v=Number(raw); if(!(v>=0)){toast(`${c}: invalid amount`,'error');return false;}
-      const b=simBalance(c); if(b.hasBase&&Math.abs(b.balance-v)<0.005) continue;
-      DB.reload_entries.push({id:nextId('reload_entries'),type:'balance',carrier:c,amount:v,note:b.hasBase?`Manual set (was ${fmtMoney(b.balance)})`:'Manual balance set',created_at:now(),user_id:currentUser?.id||null}); n++;
-    }
-    if(n){save();toast('SIM balance updated','success');} else toast('No changes','warn');
-    rr();
-  }, 'Save Balance');
+function reloadEntriesFor(dateStr){return (DB.reload_entries||[]).filter(x=>(x.created_at||'').startsWith(dateStr));}
+function reloadDaySummary(dateStr){
+ const es=reloadEntriesFor(dateStr); const sales=es.filter(x=>x.type==='sale').reduce((a,x)=>a+Number(x.amount||0),0); const topups=es.filter(x=>x.type==='topup').reduce((a,x)=>a+Number(x.amount||0),0);
+ const opening=RELOAD_CARRIERS.reduce((a,c)=>a+(Number(es.find(x=>x.type==='opening'&&x.carrier===c)?.amount)||0),0);
+ const closing=RELOAD_CARRIERS.reduce((a,c)=>a+(Number(es.find(x=>x.type==='closing'&&x.carrier===c)?.amount)||0),0);
+ const hasClosing=RELOAD_CARRIERS.every(c=>es.some(x=>x.type==='closing'&&x.carrier===c));
+ const used=opening+topups-closing; return {sales,topups,opening,closing,used,profit:hasClosing?sales-used:0,hasClosing};
 }
-
-/* ---- SIM cards ---- */
-function simCardsHTML(){
-  const cards=RELOAD_CARRIERS.map(c=>{
-    const b=simBalance(c), low=simLow(c); let cls='ok',tag='OK';
-    if(!b.hasBase){cls='none';tag='Not set';} else if(b.balance<=0){cls='empty';tag='Empty';} else if(b.balance<low){cls='low';tag='Low';}
-    const baseLbl=b.baseType==='opening'?'Opening':b.baseType==='closing'?'Last closing':'Set balance';
-    const sub=b.hasBase?`${baseLbl} ${fmtMoney(b.base)} + Top-up ${fmtMoney(b.top)} − Sold ${fmtMoney(b.sold)}`:'Balance set කරල නෑ — Opening / Set Balance දාන්න';
-    return `<div class="sim-card ${cls}" style="--sim:${SIM_COLORS[c]||'var(--blue)'}"><div class="sim-top"><span class="sim-name"><span class="sim-dot"></span>${c}</span><span class="sim-tag ${cls}">${tag}</span></div><div class="sim-bal">${b.hasBase?`<small>LKR</small>${fmtMoney(b.balance)}`:'—'}</div><div class="sim-sub">${sub}<br>Low limit ${fmtMoney(low)}${simComm(c)?` · Commission ${simComm(c)}%`:''}</div><div class="sim-actions"><button class="ios-pill ghost xs" onclick="showSetSimBalanceModal('${c}')">✏️ Set</button><button class="ios-pill ghost xs" onclick="showSimHistoryModal('${c}')">📜 History</button></div></div>`;
-  }).join('');
-  return `<div class="card" style="margin-bottom:14px"><div class="row" style="justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px"><h3 style="margin:0">💳 Current SIM Balances</h3><button class="ios-pill blue sm" onclick="showSetSimBalanceModal()">✏️ Set / Correct Balances</button></div><div class="sim-grid" style="margin-bottom:0">${cards}</div><p class="muted small" style="margin-top:10px">Balance = Opening (හෝ අන්තිමට set කරපු) + Top-ups − Reload sales. SIM එකකට වෙන වෙනම low limit / commission / quick amounts ⚙️ Settings වලින් දාන්න.</p></div>`;
-}
-
-/* ---- SIM balance history (timeline with running balance) ---- */
-function simHistoryRows(c){
-  const td=today();
-  const ev=(DB.reload_entries||[]).filter(x=>x.carrier===c&&x.created_at).map(x=>{const d=x.created_at.slice(0,10);let t=x.created_at; if(x.type==='opening')t=d+' 00:00:00'; else if(x.type==='closing')t=d+' 23:59:59'; return {x,t};}).sort((a,b)=>a.t.localeCompare(b.t)||(a.x.id||0)-(b.x.id||0));
-  let run=null; const rows=[];
-  ev.forEach(({x})=>{
-    const a=Number(x.amount||0); let delta=null,kind='';
-    if(x.cancelled){rows.push({x,delta:null,run,kind:'cancelled'});return;}
-    if(x.type==='opening'||x.type==='balance'||(x.type==='closing'&&x.created_at.slice(0,10)<td)){ delta=run===null?null:a-run; kind='set'; run=a; }
-    else if(x.type==='closing'){ kind='record'; }
-    else if(x.type==='topup'){ if(run!==null)run+=a; delta=a; }
-    else if(x.type==='sale'){ if(run!==null)run-=a; delta=-a; }
-    rows.push({x,delta,run,kind});
-  });
-  return rows.reverse();
-}
-function showSimHistoryModal(c){
-  const rows=simHistoryRows(c).slice(0,150);
-  const body=rows.length?`<div class="table-wrap"><table><thead><tr><th>Date / Time</th><th>Event</th><th>Change</th><th>Balance after</th><th>Note</th></tr></thead><tbody>${rows.map(r=>{
-    const x=r.x; let chg='—',cls='';
-    if(r.kind==='cancelled'){chg='cancelled';}
-    else if(r.kind==='record'){chg=`counted ${fmtMoney(x.amount)}`;}
-    else if(r.delta===null){chg=`set ${fmtMoney(x.amount)}`;}
-    else {chg=(r.delta>=0?'+':'−')+fmtMoney(Math.abs(r.delta)); cls=r.delta>=0?'success':'warn';}
-    const ev=RELOAD_LABELS[x.type]||x.type; const note=[x.reload_number?('📞 '+x.reload_number):'',x.note||'',x.diff?('Diff '+(x.diff>0?'+':'')+fmtMoney(x.diff)):'',x.credit?'Credit':'',x.edited?'edited':''].filter(Boolean).join(' · ');
-    return `<tr style="${r.kind==='cancelled'?'opacity:.5;text-decoration:line-through':''}"><td>${esc(x.created_at)}</td><td>${esc(ev)}</td><td class="strong ${cls}">${chg}</td><td>${r.run===null?'—':fmtMoney(r.run)}</td><td class="muted small">${esc(note)||'—'}</td></tr>`;}).join('')}</tbody></table></div><p class="muted small">Latest 150 events. "Set" rows ට අදාළ වෙනස = expected balance එකයි ගහපු balance එකයි අතර වෙනස — balance එක අඩු වුණ හේතුව මෙතනින් බලන්න.</p>`:'<p class="muted center pad">No history yet for this SIM.</p>';
-  openModal(`📜 ${c} — Balance History`, body, ()=>{}, 'Close');
-}
-
-/* ---- Opening / Closing balances (closing auto-fills calculated balance and flags differences) ---- */
-function upsertReloadBalance(type,carrier,amount,note='',extra){
-  const d=today(); let old=(DB.reload_entries||[]).find(x=>!x.cancelled&&x.type===type&&x.carrier===carrier&&(x.created_at||'').startsWith(d));
-  if(old){old.amount=amount;old.note=note;old.updated_at=now();old.user_id=currentUser?.id||null;Object.assign(old,extra||{});}
-  else DB.reload_entries.push(Object.assign({id:nextId('reload_entries'),type,carrier,amount,note,created_at:now(),user_id:currentUser?.id||null},extra||{}));
-  save();
+function upsertReloadBalance(type,carrier,amount,note=''){
+ const d=today(); let old=(DB.reload_entries||[]).find(x=>x.type===type&&x.carrier===carrier&&(x.created_at||'').startsWith(d));
+ if(old){old.amount=amount;old.note=note;old.updated_at=now();old.user_id=currentUser?.id||null;}
+ else DB.reload_entries.push({id:nextId('reload_entries'),type,carrier,amount,note,created_at:now(),user_id:currentUser?.id||null});
+ save();
 }
 function showReloadBalanceModal(type){
-  const isOpen=type==='opening', label=isOpen?'Morning Opening Balance':'Evening Remaining Balance';
-  const hint=isOpen?'යට තියෙන්නේ අන්තිමට දන්න balance එක (ඊයේ closing / set කරපු එක). SIM එකේ real balance එක වෙනස් නම් ඒක ගහන්න.':'Closing balance එකට <b>calculated balance</b> එක කලින් පිරිලා තියෙනවා. SIM එකේ real balance එක ගහන්න — calculated එකට වඩා වෙනස් නම් diff එක flag වෙනවා.';
-  openModal(`📲 ${label}`, `<div class="form-grid"><p class="muted small">${hint}</p>${RELOAD_CARRIERS.map(c=>{
-    const old=reloadEntriesFor(today()).find(x=>x.type===type&&x.carrier===c), b=simBalance(c);
-    const pre=old?Number(old.amount):(isOpen?((b.hasBase&&b.baseType!=='opening')?b.base:''):(b.hasBase?Number(b.balance.toFixed(2)):''));
-    const calc=(!isOpen&&b.hasBase)?`<div class="muted small" style="margin-top:3px">Calculated: <b>${fmtMoney(b.balance)}</b> (${fmtMoney(b.base)} + ${fmtMoney(b.top)} − ${fmtMoney(b.sold)})</div>`:'';
-    return field(c,`<input id="rb-${c}" class="ios-input" type="number" min="0" step="0.01" value="${pre}" placeholder="0.00">${calc}`);}).join('')}</div>`,()=>{
-    const vals=RELOAD_CARRIERS.map(c=>({carrier:c,raw:document.getElementById('rb-'+c).value})).filter(v=>v.raw!=='').map(v=>({carrier:v.carrier,amount:Number(v.raw)}));
-    if(vals.some(v=>!(v.amount>=0))){toast('Invalid amount','error');return false;}
-    const diffs=[];
-    if(!isOpen) vals.forEach(v=>{const b=simBalance(v.carrier); if(b.hasBase&&Math.abs(b.balance-v.amount)>0.5) diffs.push(`${v.carrier}: ගහපු ${fmtMoney(v.amount)} · calculated ${fmtMoney(b.balance)} · diff ${v.amount-b.balance>0?'+':''}${fmtMoney(v.amount-b.balance)}`);});
-    if(diffs.length&&!confirm('⚠️ Balance difference තියෙනවා:\n\n'+diffs.join('\n')+'\n\nReload එක වැරදියට ගහලා/දාලා නැතිවෙන්න පුළුවන්. කොහොම හරි save කරනවාද?')) return false;
-    vals.forEach(v=>{const b=simBalance(v.carrier); const extra=(!isOpen&&b.hasBase)?{calc:Number(b.balance.toFixed(2)),diff:Number((v.amount-b.balance).toFixed(2))}:{}; upsertReloadBalance(type,v.carrier,v.amount,'',extra);});
-    toast(`${label} saved`+(diffs.length?' (diff flagged)':''),diffs.length?'warn':'success'); rr();
-  },'Save Balances');
+ const isOpen=type==='opening', label=isOpen?'Morning Opening Balance':'Evening Remaining Balance';
+ openModal(`📲 ${label}`, `<div class="form-grid"><p class="muted small">Enter the amount remaining/available on each SIM. You can update it later on the same day.</p>${RELOAD_CARRIERS.map(c=>{const old=reloadEntriesFor(today()).find(x=>x.type===type&&x.carrier===c);return field(c,`<input id="rb-${c}" class="ios-input" type="number" min="0" step="0.01" value="${old?Number(old.amount):''}" placeholder="0.00">`)}).join('')}</div>`,()=>{
+  const vals=RELOAD_CARRIERS.map(c=>({carrier:c,amount:Number(document.getElementById('rb-'+c).value||0)}));
+  vals.forEach(v=>upsertReloadBalance(type,v.carrier,v.amount)); toast(`${label} saved`,'success'); renderReload(document.getElementById('content'));
+ },'Save Balances');
 }
-
-/* ---- Top-up (cash or supplier credit) ---- */
-function rtPayChange(){const v=document.getElementById('rt-pay').value; document.getElementById('rt-sup-wrap').style.display=v==='credit'?'block':'none'; const n=document.getElementById('rt-note-cash'); if(n)n.style.display=v==='cash'?'block':'none';}
 function showReloadTopupModal(){
-  const sups=[...new Set([...(DB.suppliers||[]).map(s=>s.name),...activeReloads().filter(x=>x.supplier).map(x=>x.supplier)])].filter(Boolean);
-  openModal('💳 Reload Top-up / Recharge SIM Balance', `<div class="form-grid">${field('Network / SIM',`<select id="rt-carrier" class="ios-input">${RELOAD_CARRIERS.map(c=>`<option>${c}</option>`).join('')}</select>`,true)}${field('Top-up Amount (LKR)','<input id="rt-amount" class="ios-input" type="number" min="1" step="0.01" placeholder="1000">',true)}${field('Payment',`<select id="rt-pay" class="ios-input" onchange="rtPayChange()"><option value="cash">💵 Cash (cashier cash එකෙන් අඩු වෙනවා)</option><option value="credit">🧾 Credit (supplier/dealer ට පස්සේ ගෙවනවා)</option></select>`,true)}<div id="rt-sup-wrap" style="display:none">${field('Supplier / Dealer',`<input id="rt-sup" class="ios-input" list="rt-sups" placeholder="Dealer name"><datalist id="rt-sups">${sups.map(s=>`<option value="${esc(s)}">`).join('')}</datalist>`,true,'Credit top-up එකේ cash අඩු වෙන්නේ ගෙවන දවසේ (Reload tab → Supplier Credit)')}</div>${field('Note / Reference','<input id="rt-note" class="ios-input" placeholder="e.g. top-up receipt number">')}</div>`,()=>{
-    const carrier=document.getElementById('rt-carrier').value,amount=Number(document.getElementById('rt-amount').value||0),note=document.getElementById('rt-note').value.trim(),pay=document.getElementById('rt-pay').value,sup=document.getElementById('rt-sup').value.trim();
-    if(amount<=0){toast('Enter valid top-up amount','error');return false;}
-    if(pay==='credit'){
-      if(!sup){toast('Supplier / dealer name ඕන','error');return false;}
-      DB.reload_entries.push({id:nextId('reload_entries'),type:'topup',carrier,amount,note,credit:true,supplier:sup,paid_amount:0,created_at:now(),user_id:currentUser?.id||null});
-      save();toast(`${carrier} top-up (credit - ${sup}) recorded`,'success');rr();return;
-    }
-    const cs=getCashSummary(); if(amount>cs.balance+0.01){if(!confirm(`Recorded cashier cash is ${fmtInt(cs.balance)}. Record top-up anyway?`))return false;}
-    DB.reload_entries.push({id:nextId('reload_entries'),type:'topup',carrier,amount,note,created_at:now(),user_id:currentUser?.id||null});
-    DB.cash_transactions.push({id:nextId('cash_transactions'),type:'cash_out',amount,note:`Reload top-up - ${carrier}${note?' · '+note:''}`,category:'Reload Top-up',created_at:now(),user_id:currentUser?.id||null,ref_type:'reload_topup',ref_id:DB.reload_entries[DB.reload_entries.length-1].id});
-    save();toast(`${carrier} top-up recorded; cashier cash reduced`,'success');rr();
-  },'Record Top-up');
+ openModal('💳 Reload Top-up / Recharge SIM Balance', `<div class="form-grid"><div class="credit-notice">Top-up purchases add balance to the selected SIM and deduct the amount from cashier cash.</div>${field('Network / SIM',`<select id="rt-carrier" class="ios-input">${RELOAD_CARRIERS.map(c=>`<option>${c}</option>`).join('')}</select>`,true)}${field('Top-up Amount (LKR)','<input id="rt-amount" class="ios-input" type="number" min="1" step="0.01" placeholder="1000">',true)}${field('Note / Reference','<input id="rt-note" class="ios-input" placeholder="e.g. top-up receipt number">')}</div>`,()=>{
+  const carrier=document.getElementById('rt-carrier').value,amount=Number(document.getElementById('rt-amount').value||0),note=document.getElementById('rt-note').value.trim(); if(amount<=0){toast('Enter valid top-up amount','error');return false;}
+  const cs=getCashSummary(); if(amount>cs.balance+0.01){if(!confirm(`Recorded cashier cash is ${fmtInt(cs.balance)}. Record top-up anyway?`))return false;}
+  DB.reload_entries.push({id:nextId('reload_entries'),type:'topup',carrier,amount,note,created_at:now(),user_id:currentUser?.id||null});
+  DB.cash_transactions.push({id:nextId('cash_transactions'),type:'cash_out',amount,note:`Reload top-up - ${carrier}${note?' · '+note:''}`,category:'Reload Top-up',created_at:now(),user_id:currentUser?.id||null,ref_type:'reload_topup',ref_id:DB.reload_entries[DB.reload_entries.length-1].id});
+  save();toast(`${carrier} top-up recorded; cashier cash reduced`,'success');renderReload(document.getElementById('content'));
+ },'Record Top-up');
 }
-function reloadCreditDue(){return activeReloads().filter(x=>x.type==='topup'&&x.credit).map(x=>({x,due:Number(x.amount||0)-Number(x.paid_amount||0)})).filter(r=>r.due>0.009);}
-function payReloadCredit(id){
-  const x=(DB.reload_entries||[]).find(e=>e.id===id); if(!x)return; const due=Number(x.amount||0)-Number(x.paid_amount||0); if(due<=0)return;
-  openModal('🧾 Pay Supplier Credit', `<div class="form-grid"><div class="credit-notice" style="background:rgba(100,210,255,.12);border-color:rgba(100,210,255,.5);color:var(--teal)">${esc(x.supplier||'-')} · ${esc(x.carrier)} top-up ${fmtMoney(x.amount)} · ගෙවන්න ඉතිරි <b>${fmtMoney(due)}</b></div>${field('Pay Amount (LKR)',`<input id="rp-amt" class="ios-input" type="number" min="1" max="${due}" step="0.01" value="${due}">`,true)}</div>`,()=>{
-    const amt=Number(document.getElementById('rp-amt').value||0); if(!(amt>0)||amt>due+0.001){toast('Invalid amount','error');return false;}
-    const cs=getCashSummary(); if(amt>cs.balance+0.01&&!confirm(`Recorded cashier cash is ${fmtInt(cs.balance)}. Pay anyway?`))return false;
-    x.paid_amount=Number(x.paid_amount||0)+amt; if(x.amount-x.paid_amount<=0.009)x.paid_at=now();
-    DB.cash_transactions.push({id:nextId('cash_transactions'),type:'cash_out',amount:amt,note:`Reload credit paid - ${x.supplier||''} (${x.carrier})`,category:'Reload Top-up',created_at:now(),user_id:currentUser?.id||null,ref_type:'reload_credit_pay',ref_id:x.id});
-    save();toast('Credit payment recorded','success');rr();
-  },'Pay');
-}
-function reloadCreditCardHTML(){
-  const l=reloadCreditDue(); if(!l.length) return '';
-  const tot=l.reduce((a,r)=>a+r.due,0);
-  return `<div class="card" style="margin-bottom:14px"><div class="row" style="justify-content:space-between;gap:8px;flex-wrap:wrap"><h3>🧾 Supplier Credit (unpaid top-ups)</h3><span class="sim-tag low">Total due ${fmtMoney(tot)}</span></div><div class="table-wrap"><table><thead><tr><th>Date</th><th>Supplier</th><th>SIM</th><th>Top-up</th><th>Paid</th><th>Due</th><th></th></tr></thead><tbody>${l.map(r=>`<tr><td>${esc((r.x.created_at||'').slice(0,10))}</td><td>${esc(r.x.supplier||'-')}</td><td>${esc(r.x.carrier)}</td><td>${fmtMoney(r.x.amount)}</td><td>${fmtMoney(r.x.paid_amount||0)}</td><td class="strong warn">${fmtMoney(r.due)}</td><td><button class="ios-pill green sm" onclick="payReloadCredit(${r.x.id})">Pay</button></td></tr>`).join('')}</tbody></table></div></div>`;
-}
-
-/* ---- Cancel / edit reload entries ---- */
-function cancelReloadEntry(id){
-  if(!canManageReload()){toast('Manager / Admin only','error');return;}
-  const x=(DB.reload_entries||[]).find(e=>e.id===id); if(!x||x.cancelled)return;
-  if(x.type==='topup'&&x.credit&&Number(x.paid_amount||0)>0){toast('Credit top-up එකට දැනටමත් ගෙවලා — cancel කරන්න බෑ','error',4000);return;}
-  const isSale=x.type==='sale';
-  openModal(`↩ Cancel ${isSale?'Reload':'Top-up'} Entry`, `<div class="form-grid"><div class="credit-notice">${esc(x.carrier)} · LKR ${fmtMoney(x.amount)}${x.reload_number?' · '+esc(x.reload_number):''}<br>${isSale?'SIM balance එකට ආපහු එකතු වෙනවා. <b>Bill එකේ total වෙනස් වෙන්නේ නෑ</b> (bill එක වෙනම හදන්න).':'SIM balance එකෙන් අඩු වෙනවා.'+(x.credit?'':' Cash ආපහු එකතු වෙනවා.')}</div>${field('Reason','<input id="rc-reason" class="ios-input" placeholder="e.g. wrong number / customer cancelled">',true)}${isSale?`<label class="row gap" style="font-size:13px"><input id="rc-refund" type="checkbox" checked> Customer ට cash refund කළා (cash-out record කරන්න)</label>`:''}</div>`,()=>{
-    const reason=document.getElementById('rc-reason').value.trim(); if(!reason){toast('Reason ඕන','error');return false;}
-    x.cancelled=true;x.cancelled_at=now();x.cancelled_by=currentUser?.id||null;x.cancel_reason=reason;
-    if(isSale&&document.getElementById('rc-refund')?.checked) DB.cash_transactions.push({id:nextId('cash_transactions'),type:'cash_out',amount:Number(x.amount),note:`Reload refund - ${x.carrier}${x.reload_number?' '+x.reload_number:''} · ${reason}`,category:'Reload Refund',created_at:now(),user_id:currentUser?.id||null,ref_type:'reload_cancel',ref_id:x.id});
-    if(x.type==='topup'&&!x.credit) DB.cash_transactions.push({id:nextId('cash_transactions'),type:'cash_in',amount:Number(x.amount),note:`Reload top-up cancelled - ${x.carrier} · ${reason}`,category:'Reload Top-up',created_at:now(),user_id:currentUser?.id||null,ref_type:'reload_cancel',ref_id:x.id});
-    save();toast('Entry cancelled; SIM balance updated','success');rr();
-  },'Cancel Entry');
-}
-function editReloadEntry(id){
-  if(!canManageReload()){toast('Manager / Admin only','error');return;}
-  const x=(DB.reload_entries||[]).find(e=>e.id===id); if(!x||x.cancelled||(x.type!=='sale'&&x.type!=='topup'))return;
-  const isSale=x.type==='sale';
-  openModal(`✏️ Edit ${isSale?'Reload':'Top-up'} Entry`, `<div class="form-grid"><div class="credit-notice">${esc(x.carrier)} · ${esc(x.created_at)}<br>${isSale?'මේකෙන් වෙනස් වෙන්නේ <b>SIM record එක</b> විතරයි — Bill එකේ amount වෙනස් වෙන්නේ නෑ.':'Cash-out record එකත් අලුත් amount එකට වෙනස් වෙනවා.'}</div>${field('Amount (LKR)',`<input id="re-amt" class="ios-input" type="number" min="1" step="0.01" value="${Number(x.amount)}">`,true)}${isSale?field('Reload Number',`<input id="re-num" class="ios-input" type="tel" value="${esc(x.reload_number||'')}">`):''}${field('Note',`<input id="re-note" class="ios-input" value="${esc(x.note||'')}">`)}</div>`,()=>{
-    const amt=Number(document.getElementById('re-amt').value||0); if(!(amt>0)){toast('Invalid amount','error');return false;}
-    const old=Number(x.amount), delta=amt-old;
-    if(isSale&&delta>0){const b=simBalance(x.carrier); if(b.hasBase&&b.balance-delta<-0.001){toast(`${x.carrier} balance මදී — amount වැඩි කරන්න බෑ`,'error');return false;}}
-    if(x.type==='topup'&&x.credit&&amt<Number(x.paid_amount||0)-0.001){toast('Paid amount එකට වඩා අඩු කරන්න බෑ','error');return false;}
-    if(x.orig_amount===undefined)x.orig_amount=old; x.amount=amt; x.edited=true; x.updated_at=now(); x.note=document.getElementById('re-note').value.trim();
-    if(isSale)x.reload_number=document.getElementById('re-num').value.trim();
-    if(x.type==='topup'&&!x.credit){const ct=(DB.cash_transactions||[]).find(t=>t.ref_type==='reload_topup'&&t.ref_id===x.id); if(ct)ct.amount=amt;}
-    save();toast('Entry updated','success');rr();
-  },'Save');
-}
-
-/* ---- Reload settings: low limit / commission % / quick amounts per SIM ---- */
-function showReloadSettingsModal(){
-  if(!canManageReload()){toast('Manager / Admin only','error');return;}
-  const cfg=reloadCfg();
-  openModal('⚙️ Reload Settings (per SIM)', `<div class="form-grid"><p class="muted small">SIM එකක් එකක් ගානේ වෙන වෙනම. Quick amounts කොමා වලින් වෙන් කරන්න (e.g. 50, 100, 250, 500).</p>${RELOAD_CARRIERS.map(c=>`<div class="card" style="padding:12px;--sim:${SIM_COLORS[c]}"><div class="sim-name" style="margin-bottom:8px"><span class="sim-dot"></span>${c}</div><div class="form-grid" style="grid-template-columns:1fr 1fr;gap:8px">${field('Low limit',`<input id="cf-low-${c}" class="ios-input" type="number" min="0" value="${cfg.low[c]??''}" placeholder="${SIM_LOW_LIMIT}">`)}${field('Commission %',`<input id="cf-comm-${c}" class="ios-input" type="number" min="0" step="0.01" value="${cfg.comm[c]??''}" placeholder="0">`)}</div>${field('Quick amounts',`<input id="cf-q-${c}" class="ios-input" value="${(Array.isArray(cfg.quick[c])&&cfg.quick[c].length?cfg.quick[c]:[]).join(', ')}" placeholder="${SIM_DEFAULT_QUICK.join(', ')}">`)}</div>`).join('')}</div>`,()=>{
-    RELOAD_CARRIERS.forEach(c=>{
-      const low=document.getElementById('cf-low-'+c).value, comm=document.getElementById('cf-comm-'+c).value, q=document.getElementById('cf-q-'+c).value;
-      if(low==='')delete cfg.low[c]; else cfg.low[c]=Math.max(0,Number(low)||0);
-      if(comm===''||Number(comm)===0)delete cfg.comm[c]; else cfg.comm[c]=Math.max(0,Number(comm)||0);
-      const arr=[...new Set(q.split(/[\s,;]+/).map(Number).filter(n=>n>0))].sort((a,b)=>a-b);
-      if(arr.length)cfg.quick[c]=arr; else delete cfg.quick[c];
-    });
-    save();toast('Reload settings saved','success');rr();
-  },'Save Settings');
-}
-
-/* ---- Day summary / helpers used elsewhere ---- */
-function reloadEntriesFor(dateStr){return activeReloads().filter(x=>(x.created_at||'').startsWith(dateStr));}
-function reloadDaySummary(dateStr){
-  const es=reloadEntriesFor(dateStr); const sales=es.filter(x=>x.type==='sale').reduce((a,x)=>a+Number(x.amount||0),0); const topups=es.filter(x=>x.type==='topup').reduce((a,x)=>a+Number(x.amount||0),0);
-  const opening=RELOAD_CARRIERS.reduce((a,c)=>a+(Number(es.find(x=>x.type==='opening'&&x.carrier===c)?.amount)||0),0);
-  const closing=RELOAD_CARRIERS.reduce((a,c)=>a+(Number(es.find(x=>x.type==='closing'&&x.carrier===c)?.amount)||0),0);
-  const hasClosing=RELOAD_CARRIERS.every(c=>es.some(x=>x.type==='closing'&&x.carrier===c));
-  const comm=es.filter(x=>x.type==='sale').reduce((a,x)=>a+Number(x.amount||0)*simComm(x.carrier)/100,0);
-  const used=opening+topups-closing; return {sales,topups,opening,closing,used,profit:hasClosing?sales-used:0,hasClosing,comm};
-}
-
-/* ---- Reports ---- */
-function reloadReportData(from,to){
-  const es=activeReloads().filter(x=>{const d=(x.created_at||'').slice(0,10);return d>=from&&d<=to;}); const sm=l=>l.reduce((a,x)=>a+Number(x.amount||0),0);
-  const per=RELOAD_CARRIERS.map(c=>{const s=es.filter(x=>x.carrier===c&&x.type==='sale'),t=es.filter(x=>x.carrier===c&&x.type==='topup'),sales=sm(s);return {c,count:s.length,sales,top:sm(t),comm:sales*simComm(c)/100,avg:s.length?sales/s.length:0};});
-  const days={}; es.forEach(x=>{const d=x.created_at.slice(0,10),o=days[d]||(days[d]={d,count:0,sales:0,top:0,comm:0}),a=Number(x.amount||0); if(x.type==='sale'){o.count++;o.sales+=a;o.comm+=a*simComm(x.carrier)/100;} else if(x.type==='topup')o.top+=a;});
-  const daily=Object.values(days).sort((a,b)=>a.d.localeCompare(b.d)); let cp=0,cd=0; daily.forEach(r=>{const s=reloadDaySummary(r.d); if(s.hasClosing){cp+=s.profit;cd++;}});
-  const tot=per.reduce((a,p)=>({count:a.count+p.count,sales:a.sales+p.sales,top:a.top+p.top,comm:a.comm+p.comm}),{count:0,sales:0,top:0,comm:0});
-  return {from,to,per,daily,tot,closingProfit:cp,closingDays:cd};
-}
-function setReloadPeriod(p){const t=new Date(); if(p==='today'){reloadFilters.from=reloadFilters.to=fmtD(t);} else if(p==='7d'){reloadFilters.to=fmtD(t);reloadFilters.from=fmtD(new Date(Date.now()-6*864e5));} else if(p==='month'){reloadFilters.from=fmtD(new Date(t.getFullYear(),t.getMonth(),1));reloadFilters.to=fmtD(t);} rr();}
-function reloadReportHTML(){
-  const R=reloadReportData(reloadFilters.from||today(),reloadFilters.to||today());
-  return `<div class="card" style="margin-bottom:14px"><div class="row" style="justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px"><h3 style="margin:0">📊 Reload Report <span class="muted small" style="font-weight:500">${esc(R.from)} → ${esc(R.to)}</span></h3><div class="head-actions"><button class="ios-pill ghost xs" onclick="setReloadPeriod('today')">Today</button><button class="ios-pill ghost xs" onclick="setReloadPeriod('7d')">Last 7 days</button><button class="ios-pill ghost xs" onclick="setReloadPeriod('month')">This month</button><button class="ios-pill ghost sm" onclick="exportReloadReportCSV()">⬇ CSV</button><button class="ios-pill blue sm" onclick="printReloadReport()">🖨 Print / PDF</button></div></div>
-  <div class="stat-grid" style="margin-bottom:12px"><div class="stat"><div class="stat-label">Reload Sales</div><div class="stat-value">${fmtMoney(R.tot.sales)}</div><div class="stat-sub">${R.tot.count} reloads</div></div><div class="stat"><div class="stat-label">Top-ups</div><div class="stat-value warn">${fmtMoney(R.tot.top)}</div></div><div class="stat"><div class="stat-label">Commission Profit</div><div class="stat-value success">${fmtMoney(R.tot.comm)}</div><div class="stat-sub">Settings වල commission % අනුව</div></div><div class="stat"><div class="stat-label">Closing-based Profit</div><div class="stat-value success">${R.closingDays?fmtMoney(R.closingProfit):'—'}</div><div class="stat-sub">${R.closingDays} day(s) with full closing</div></div></div>
-  <div class="table-wrap"><table><thead><tr><th>SIM</th><th>Reloads</th><th>Sales</th><th>Avg</th><th>Top-ups</th><th>Commission</th></tr></thead><tbody>${R.per.map(p=>`<tr><td><b>${p.c}</b></td><td>${p.count}</td><td>${fmtMoney(p.sales)}</td><td>${fmtMoney(p.avg)}</td><td>${fmtMoney(p.top)}</td><td class="success">${fmtMoney(p.comm)}</td></tr>`).join('')}</tbody></table></div>
-  ${R.daily.length>1?`<div class="table-wrap"><table><thead><tr><th>Date</th><th>Reloads</th><th>Sales</th><th>Top-ups</th><th>Commission</th></tr></thead><tbody>${R.daily.map(r=>`<tr><td>${esc(r.d)}</td><td>${r.count}</td><td>${fmtMoney(r.sales)}</td><td>${fmtMoney(r.top)}</td><td class="success">${fmtMoney(r.comm)}</td></tr>`).join('')}</tbody></table></div>`:''}</div>`;
-}
-function dlCSV(rows,name){const csv=rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'}));a.download=name;a.click();}
-function exportReloadReportCSV(){
-  const R=reloadReportData(reloadFilters.from||today(),reloadFilters.to||today());
-  const rows=[['Reload report',R.from,R.to],[],['SIM','Reloads','Sales','Avg','Top-ups','Commission'],...R.per.map(p=>[p.c,p.count,p.sales,p.avg.toFixed(2),p.top,p.comm.toFixed(2)]),['TOTAL',R.tot.count,R.tot.sales,'',R.tot.top,R.tot.comm.toFixed(2)],[],['Date','Reloads','Sales','Top-ups','Commission'],...R.daily.map(r=>[r.d,r.count,r.sales,r.top,r.comm.toFixed(2)])];
-  dlCSV(rows,`reload_report_${R.from}_${R.to}.csv`);
-}
-function printReloadReport(){
-  const R=reloadReportData(reloadFilters.from||today(),reloadFilters.to||today()); const shop=esc((DB.settings&&DB.settings.shop_name)||'');
-  const tb=(h,rows)=>`<table><thead><tr>${h.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
-  const w=window.open('','_blank'); if(!w){toast('Popup blocked — allow popups to print','error');return;}
-  w.document.write(`<html><head><meta charset="utf-8"><title>Reload Report</title><style>body{font-family:Arial,sans-serif;padding:24px;color:#111}h1{font-size:20px;margin:0}h2{font-size:14px;margin:18px 0 6px}p{margin:2px 0;color:#555;font-size:12px}table{width:100%;border-collapse:collapse;font-size:12px}th,td{border:1px solid #ccc;padding:6px 8px;text-align:left}th{background:#f2f2f2}</style></head><body><h1>${shop} — Reload Report</h1><p>${esc(R.from)} to ${esc(R.to)} · Printed ${esc(now())}</p><h2>By SIM</h2>${tb(['SIM','Reloads','Sales','Avg','Top-ups','Commission'],[...R.per.map(p=>[p.c,p.count,fmtMoney(p.sales),fmtMoney(p.avg),fmtMoney(p.top),fmtMoney(p.comm)]),['<b>TOTAL</b>','<b>'+R.tot.count+'</b>','<b>'+fmtMoney(R.tot.sales)+'</b>','','<b>'+fmtMoney(R.tot.top)+'</b>','<b>'+fmtMoney(R.tot.comm)+'</b>']])}${R.daily.length?`<h2>By day</h2>${tb(['Date','Reloads','Sales','Top-ups','Commission'],R.daily.map(r=>[r.d,r.count,fmtMoney(r.sales),fmtMoney(r.top),fmtMoney(r.comm)]))}`:''}<p style="margin-top:14px">Closing-based profit: ${R.closingDays?fmtMoney(R.closingProfit)+' ('+R.closingDays+' day(s))':'n/a'}</p></body></html>`);
-  w.document.close(); setTimeout(()=>{w.focus();w.print();},300);
-}
-
-/* ---- Reload page ---- */
-let reloadFilters={from:today(),to:today(),carrier:'all',type:'all',min:'',max:'',q:''};
-function reloadNoteCell(x){
-  if(x.sale_id) return `<button class="ios-pill ghost sm" onclick="showSaleById(${x.sale_id})">${esc(DB.sales.find(s=>s.id===x.sale_id)?.invoice_no||'Bill')}</button>${x.note?' <span class="muted small">'+esc(x.note)+'</span>':''}`;
-  const parts=[]; if(x.credit){const due=Number(x.amount||0)-Number(x.paid_amount||0); parts.push(`<span class="sim-tag low">Credit${due>0.009?' · due '+fmtMoney(due):' · paid'}</span> ${esc(x.supplier||'')}`);} if(x.diff)parts.push(`<span class="sim-tag ${Math.abs(x.diff)>0.5?'empty':'ok'}">Diff ${x.diff>0?'+':''}${fmtMoney(x.diff)}</span>`); if(x.note)parts.push(esc(x.note)); if(x.cancelled)parts.push(`<span class="sim-tag empty">Cancelled</span> ${esc(x.cancel_reason||'')}`); if(x.edited&&!x.cancelled)parts.push(`<span class="sim-tag none">edited (was ${fmtMoney(x.orig_amount)})</span>`);
-  return parts.join(' ')||'-';
-}
+let reloadFilters={from:today(),to:today(),carrier:'all',type:'all',min:'',max:''};
 function renderReload(root){
-  const d=today(), q=(reloadFilters.q||'').toLowerCase().trim();
-  const es=[...(DB.reload_entries||[])].filter(x=>{const dt=(x.created_at||'').slice(0,10);
-    if(q){const inv=x.sale_id?(DB.sales.find(s=>s.id===x.sale_id)?.invoice_no||''):''; const hay=[x.reload_number,normNum(x.reload_number),x.note,x.supplier,inv,x.carrier].join(' ').toLowerCase(); if(!hay.includes(q)&&!hay.includes(normNum(q)||'~~'))return false;}
-    return (!reloadFilters.from||dt>=reloadFilters.from)&&(!reloadFilters.to||dt<=reloadFilters.to)&&(reloadFilters.carrier==='all'||x.carrier===reloadFilters.carrier)&&(reloadFilters.type==='all'||x.type===reloadFilters.type)&&(reloadFilters.min===''||Number(x.amount)>=Number(reloadFilters.min))&&(reloadFilters.max===''||Number(x.amount)<=Number(reloadFilters.max));}).sort((a,b)=>(b.created_at||'').localeCompare(a.created_at||''));
-  const sum=reloadDaySummary(d);
-  const byCarrier=RELOAD_CARRIERS.map(c=>{const esd=reloadEntriesFor(d).filter(x=>x.carrier===c);const sales=esd.filter(x=>x.type==='sale').reduce((a,x)=>a+Number(x.amount||0),0);const top=esd.filter(x=>x.type==='topup').reduce((a,x)=>a+Number(x.amount||0),0);const opE=esd.find(x=>x.type==='opening'),clE=esd.find(x=>x.type==='closing');const op=Number(opE?.amount||0),cl=Number(clE?.amount||0);const closed=!!clE;return {c,sales,top,op,cl,closed,diff:clE&&clE.diff!==undefined?clE.diff:null,comm:sales*simComm(c)/100,profit:closed?sales-(op+top-cl):null};});
-  const manage=canManageReload(), cols=manage?9:8;
-  root.innerHTML=`<div class="view-shell"><div class="page-head"><div><h1>📲 Reload Management</h1><p>SIM balances, reload sales, top-ups, commission and reports</p></div><div class="head-actions"><button class="ios-pill blue sm" onclick="showReloadSaleModal()">➕ Sell Reload</button><button class="ios-pill teal sm" onclick="showReloadTopupModal()">💳 Top-up SIM</button>${manage?'<button class="ios-pill ghost sm" onclick="showReloadSettingsModal()">⚙️ Settings</button>':''}</div></div><div class="view-scroll">
- ${simCardsHTML()}
- <div class="stat-grid" style="margin-bottom:14px"><div class="stat"><div class="stat-icon">📲</div><div class="stat-label">Reload Sales Today</div><div class="stat-value">${fmtInt(sum.sales)}</div></div><div class="stat"><div class="stat-icon">💳</div><div class="stat-label">Top-ups Today</div><div class="stat-value warn">${fmtInt(sum.topups)}</div></div><div class="stat"><div class="stat-icon">💰</div><div class="stat-label">Commission Today</div><div class="stat-value success">${fmtMoney(sum.comm)}</div><div class="stat-sub">${RELOAD_CARRIERS.some(c=>simComm(c))?'Commission % අනුව':'⚙️ Settings වල commission % දාන්න'}</div></div><div class="stat"><div class="stat-icon">📈</div><div class="stat-label">Estimated Profit</div><div class="stat-value success">${sum.hasClosing?fmtInt(sum.profit):'—'}</div><div class="stat-sub">${sum.hasClosing?'Opening + top-ups − closing':'Enter evening closing balances'}</div></div></div>
- <div class="card" style="margin-bottom:14px"><div class="row" style="justify-content:space-between;gap:8px;flex-wrap:wrap"><h3>Today's SIM Balances</h3><div class="head-actions"><button class="ios-pill ghost sm" onclick="showReloadBalanceModal('opening')">🌅 Opening balance</button><button class="ios-pill orange sm" onclick="showReloadBalanceModal('closing')">🌙 Closing balance</button></div></div><div class="table-wrap"><table><thead><tr><th>Network</th><th>Opening</th><th>Top-ups</th><th>Reload Sales</th><th>Closing</th><th>Diff</th><th>Commission</th><th>Profit*</th></tr></thead><tbody>${byCarrier.map(x=>`<tr><td><b>${x.c}</b></td><td>${fmtInt(x.op)}</td><td>${fmtInt(x.top)}</td><td>${fmtInt(x.sales)}</td><td>${x.closed?fmtInt(x.cl):'—'}</td><td class="${x.diff!==null&&Math.abs(x.diff)>0.5?'warn':''}">${x.diff===null?'—':(x.diff>0?'+':'')+fmtMoney(x.diff)}</td><td class="success">${fmtMoney(x.comm)}</td><td class="${x.profit!==null&&x.profit>=0?'success':'warn'}">${x.profit===null?'—':fmtInt(x.profit)}</td></tr>`).join('')}</tbody></table></div><p class="muted small">* Profit = reload money collected − balance consumed (opening + top-ups − closing). Diff = ගහපු closing − calculated balance (0 නොවේ නම් reload ගහන්න අමතක වෙලා/වැරදිලා තියෙන්න පුළුවන්).</p></div>
- ${reloadCreditCardHTML()}
- ${reloadReportHTML()}
- <div class="card"><h3>Reload History & Filters</h3><div class="form-grid" style="grid-template-columns:repeat(auto-fit,minmax(145px,1fr));margin-bottom:12px"><div class="form-field"><label class="field-label">From date</label><input class="ios-input" type="date" value="${reloadFilters.from}" onchange="reloadFilters.from=this.value;rr()"></div><div class="form-field"><label class="field-label">To date</label><input class="ios-input" type="date" value="${reloadFilters.to}" onchange="reloadFilters.to=this.value;rr()"></div><div class="form-field"><label class="field-label">Network</label><select class="ios-input" onchange="reloadFilters.carrier=this.value;rr()"><option value="all">All networks</option>${RELOAD_CARRIERS.map(c=>`<option ${reloadFilters.carrier===c?'selected':''}>${c}</option>`).join('')}</select></div><div class="form-field"><label class="field-label">Entry type</label><select class="ios-input" onchange="reloadFilters.type=this.value;rr()"><option value="all">All types</option>${Object.entries(RELOAD_LABELS).map(([v,l])=>`<option value="${v}" ${reloadFilters.type===v?'selected':''}>${l}</option>`).join('')}</select></div><div class="form-field"><label class="field-label">Min amount</label><input class="ios-input" type="number" value="${reloadFilters.min}" placeholder="0" onchange="reloadFilters.min=this.value;rr()"></div><div class="form-field"><label class="field-label">Max amount</label><input class="ios-input" type="number" value="${reloadFilters.max}" placeholder="Any" onchange="reloadFilters.max=this.value;rr()"></div><div class="form-field"><label class="field-label">🔍 Number / Bill / Note</label><input class="ios-input" value="${esc(reloadFilters.q||'')}" placeholder="077... / invoice" onchange="reloadFilters.q=this.value;rr()"></div></div>
- <div class="table-wrap"><table><thead><tr><th>Date / Time</th><th>Network</th><th>Type</th><th>Amount</th><th>Number</th><th>Bill / Note</th><th>Staff</th>${manage?'<th></th>':''}<th></th></tr></thead><tbody>${es.length?es.map(x=>{const dead=x.cancelled; const canAct=!dead&&(x.type==='sale'||x.type==='topup'); return `<tr style="${dead?'opacity:.55':''}"><td>${esc(x.created_at||'')}</td><td>${esc(x.carrier||'-')}</td><td>${esc(RELOAD_LABELS[x.type]||x.type)}</td><td class="strong" style="${dead?'text-decoration:line-through':''}">${fmtInt(x.amount)}</td><td>${x.reload_number?'📞 '+esc(x.reload_number):'-'}</td><td>${reloadNoteCell(x)}</td><td>${esc(DB.users.find(u=>u.id===x.user_id)?.name||'-')}</td>${manage?`<td style="white-space:nowrap">${canAct?`<button class="ios-pill ghost xs" onclick="editReloadEntry(${x.id})">✏️</button> <button class="ios-pill red xs" onclick="cancelReloadEntry(${x.id})">↩</button>`:''}</td>`:''}<td>${(x.type==='sale'&&!dead)?`<button class="ios-pill purple xs" onclick="repeatReload(${x.id})" title="Repeat this reload">🔁</button>`:''}</td></tr>`;}).join(''):`<tr><td colspan="${cols+1}" class="muted center">No reload records for these filters.</td></tr>`}</tbody></table></div><div class="row" style="justify-content:space-between;margin-top:10px"><span class="muted small">${es.length} records · total ${fmtInt(es.filter(x=>!x.cancelled).reduce((a,x)=>a+Number(x.amount||0),0))}</span><button class="ios-pill ghost sm" onclick="exportReloadCSV()">⬇ Export CSV</button></div></div></div></div>`;
+ const d=today(),es=[...(DB.reload_entries||[])].filter(x=>{const dt=(x.created_at||'').slice(0,10);return (!reloadFilters.from||dt>=reloadFilters.from)&&(!reloadFilters.to||dt<=reloadFilters.to)&&(reloadFilters.carrier==='all'||x.carrier===reloadFilters.carrier)&&(reloadFilters.type==='all'||x.type===reloadFilters.type)&&(reloadFilters.min===''||Number(x.amount)>=Number(reloadFilters.min))&&(reloadFilters.max===''||Number(x.amount)<=Number(reloadFilters.max));}).sort((a,b)=>(b.created_at||'').localeCompare(a.created_at||''));
+ const sum=reloadDaySummary(d); const byCarrier=RELOAD_CARRIERS.map(c=>{const esd=reloadEntriesFor(d).filter(x=>x.carrier===c);const sales=esd.filter(x=>x.type==='sale').reduce((a,x)=>a+Number(x.amount||0),0);const top=esd.filter(x=>x.type==='topup').reduce((a,x)=>a+Number(x.amount||0),0);const op=Number(esd.find(x=>x.type==='opening')?.amount||0),cl=Number(esd.find(x=>x.type==='closing')?.amount||0);const closed=esd.some(x=>x.type==='closing');return {c,sales,top,op,cl,profit:closed?sales-(op+top-cl):null,closed};});
+ const labels={sale:'Reload Sale',topup:'Top-up',opening:'Opening Balance',closing:'Closing Balance'};
+ root.innerHTML=`<div class="view-shell"><div class="page-head"><div><h1>📲 Reload Management</h1><p>Daily reload sales, SIM balances, top-ups and estimated profit</p></div><div class="head-actions"><button class="ios-pill blue sm" onclick="showReloadSaleModal()">➕ Sell Reload</button><button class="ios-pill teal sm" onclick="showReloadTopupModal()">💳 Top-up SIM</button></div></div><div class="view-scroll">
+ <div class="stat-grid" style="margin-bottom:14px"><div class="stat"><div class="stat-icon">📲</div><div class="stat-label">Reload Sales Today</div><div class="stat-value">${fmtInt(sum.sales)}</div></div><div class="stat"><div class="stat-icon">💳</div><div class="stat-label">Top-ups Today</div><div class="stat-value warn">${fmtInt(sum.topups)}</div></div><div class="stat"><div class="stat-icon">📈</div><div class="stat-label">Estimated Profit</div><div class="stat-value success">${sum.hasClosing?fmtInt(sum.profit):'—'}</div><div class="stat-sub">${sum.hasClosing?'Based on opening + top-ups − closing':'Enter evening closing balances to calculate'}</div></div></div>
+ <div class="card" style="margin-bottom:14px"><div class="row" style="justify-content:space-between;gap:8px;flex-wrap:wrap"><h3>Today's SIM Balances</h3><div class="head-actions"><button class="ios-pill ghost sm" onclick="showReloadBalanceModal('opening')">🌅 Opening balance</button><button class="ios-pill orange sm" onclick="showReloadBalanceModal('closing')">🌙 Closing balance</button></div></div><div class="table-wrap"><table><thead><tr><th>Network</th><th>Opening</th><th>Top-ups</th><th>Reload Sales</th><th>Closing</th><th>Profit*</th></tr></thead><tbody>${byCarrier.map(x=>`<tr><td><b>${x.c}</b></td><td>${fmtInt(x.op)}</td><td>${fmtInt(x.top)}</td><td>${fmtInt(x.sales)}</td><td>${x.closed?fmtInt(x.cl):'—'}</td><td class="${x.profit!==null&&x.profit>=0?'success':'warn'}">${x.profit===null?'—':fmtInt(x.profit)}</td></tr>`).join('')}</tbody></table></div><p class="muted small">* Profit is estimated as reload money collected minus balance consumed (opening + top-ups − closing). Set opening and closing balances for each SIM to get a useful figure.</p></div>
+ <div class="card"><h3>Reload History & Filters</h3><div class="form-grid" style="grid-template-columns:repeat(auto-fit,minmax(145px,1fr));margin-bottom:12px"><div class="form-field"><label class="field-label">From date</label><input class="ios-input" type="date" value="${reloadFilters.from}" onchange="reloadFilters.from=this.value;renderReload(document.getElementById('content'))"></div><div class="form-field"><label class="field-label">To date</label><input class="ios-input" type="date" value="${reloadFilters.to}" onchange="reloadFilters.to=this.value;renderReload(document.getElementById('content'))"></div><div class="form-field"><label class="field-label">Network</label><select class="ios-input" onchange="reloadFilters.carrier=this.value;renderReload(document.getElementById('content'))"><option value="all">All networks</option>${RELOAD_CARRIERS.map(c=>`<option ${reloadFilters.carrier===c?'selected':''}>${c}</option>`).join('')}</select></div><div class="form-field"><label class="field-label">Entry type</label><select class="ios-input" onchange="reloadFilters.type=this.value;renderReload(document.getElementById('content'))"><option value="all">All types</option>${Object.entries(labels).map(([v,l])=>`<option value="${v}" ${reloadFilters.type===v?'selected':''}>${l}</option>`).join('')}</select></div><div class="form-field"><label class="field-label">Min amount</label><input class="ios-input" type="number" value="${reloadFilters.min}" placeholder="0" onchange="reloadFilters.min=this.value;renderReload(document.getElementById('content'))"></div><div class="form-field"><label class="field-label">Max amount</label><input class="ios-input" type="number" value="${reloadFilters.max}" placeholder="Any" onchange="reloadFilters.max=this.value;renderReload(document.getElementById('content'))"></div></div><div class="table-wrap"><table><thead><tr><th>Date / Time</th><th>Network</th><th>Type</th><th>Amount</th><th>Bill / Note</th><th>Staff</th></tr></thead><tbody>${es.length?es.map(x=>`<tr><td>${esc(x.created_at||'')}</td><td>${esc(x.carrier||'-')}</td><td>${esc(labels[x.type]||x.type)}</td><td class="strong">${fmtInt(x.amount)}</td><td>${x.sale_id?`<button class="ios-pill ghost sm" onclick="showSaleById(${x.sale_id})">${esc(DB.sales.find(s=>s.id===x.sale_id)?.invoice_no||'Bill')}</button>`:esc(x.note||'-')}</td><td>${esc(DB.users.find(u=>u.id===x.user_id)?.name||'-')}</td></tr>`).join(''):'<tr><td colspan="6" class="muted center">No reload records for these filters.</td></tr>'}</tbody></table></div><div class="row" style="justify-content:space-between;margin-top:10px"><span class="muted small">${es.length} records · total ${fmtInt(es.reduce((a,x)=>a+Number(x.amount||0),0))}</span><button class="ios-pill ghost sm" onclick="exportReloadCSV()">⬇ Export CSV</button></div></div></div></div>`;
 }
 function showSaleById(id){const s=DB.sales.find(x=>x.id===id);if(s)showSaleCompleteModal(id);else toast('Bill not found','error');}
-function exportReloadCSV(){dlCSV([['DateTime','Carrier','Type','Amount','Number','Note','SaleID','Supplier','Credit paid','Cancelled','Diff','User'],...(DB.reload_entries||[]).map(x=>[x.created_at,x.carrier,x.type,x.amount,x.reload_number||'',x.note||'',x.sale_id||'',x.supplier||'',x.credit?(x.paid_amount||0):'',x.cancelled?(x.cancel_reason||'yes'):'',x.diff??'',DB.users.find(u=>u.id===x.user_id)?.name||''])],`reload_history_${today()}.csv`);}
-/* ================= /RELOAD MANAGEMENT ================= */
-
+function exportReloadCSV(){const rows=[['DateTime','Carrier','Type','Amount','Note','SaleID','User'],...(DB.reload_entries||[]).map(x=>[x.created_at,x.carrier,x.type,x.amount,x.note||'',x.sale_id||'',DB.users.find(u=>u.id===x.user_id)?.name||''])];const csv=rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));a.download=`reload_history_${today()}.csv`;a.click();}
 
 function renderCreditExtraFields(show) {
   const wrap = document.getElementById('credit-extra-fields'); if (!wrap) return;
@@ -2384,7 +2088,6 @@ function updateTotal() {
 }
 function completeSale() {
   if (!cart.length){ toast('Cart is empty','error'); return; }
-  if (!validateCartReloads()) return;
   const disc = Number(document.getElementById('discount').value||0);
   const paid = Number(document.getElementById('paid').value||0);
   const st = cart.reduce((a,i)=>a+i.price*i.qty,0);
@@ -2423,7 +2126,6 @@ function completeSale() {
   finalizeSale({ disc, paidFinal, total, change, balance: 0, method, custInfo: { name: preName, phone: prePhone, idnum: document.getElementById('cust-idnum')?.value.trim() || '', address: document.getElementById('cust-address')?.value.trim() || '' } });
 }
 function finalizeSale({ disc, paidFinal, total, change, balance, method, custInfo }) {
-  if (!validateCartReloads()) return;
   const cname = custInfo.name, cphone = custInfo.phone, cidnum = custInfo.idnum, caddress = custInfo.address;
   let cust_id = null;
   if (cname) {
@@ -2443,7 +2145,7 @@ function finalizeSale({ disc, paidFinal, total, change, balance, method, custInf
     DB.sale_items.push({ id:nextId('sale_items'), sale_id:sale.id, item_type: it.type || 'phone', item_code: it.code || '', barcode: it.barcode || '', warranty_months: it.warranty_months || 0, stock_unit_id: it.type==='phone' ? it.unit_id : null, accessory_id: it.type==='accessory' ? it.accessory_id : null, product_id: it.type==='phone' ? it.product_id : null, description:it.desc, price:it.price, qty:it.qty, cost:it.cost });
     if (it.type === 'phone') { const u = DB.stock_units.find(x=>x.id===it.unit_id); if (u){ u.status = 'sold'; u.sold_at = now(); } }
     else if (it.type === 'accessory') { const a = DB.accessories.find(x=>x.id===it.accessory_id); if (a){ a.qty = Math.max(0, (a.qty||0) - it.qty); } }
-    if (it.type === 'reload') DB.reload_entries.push({id:nextId('reload_entries'),type:'sale',carrier:it.carrier||'Other',amount:Number(it.price||0)*Number(it.qty||1),note:it.reload_note||'',reload_number:it.reload_number||'',sale_id:sale.id,created_at:now(),user_id:currentUser?.id||null});
+    if (it.type === 'reload') DB.reload_entries.push({id:nextId('reload_entries'),type:'sale',carrier:it.carrier||'Other',amount:Number(it.price||0)*Number(it.qty||1),note:it.reload_note||'',sale_id:sale.id,created_at:now(),user_id:currentUser?.id||null});
   });
   if (cust_id && balance > 0) addCredit(cust_id, balance);
   save();
@@ -3294,64 +2996,71 @@ document.addEventListener('mousedown', (e) => {
 /* ═══════════════════════════════════════════════════════════════
    INIT
    ═══════════════════════════════════════════════════════════════ */
-(async function init() {
+async function startPosAfterFirebaseAuth(firebaseUser) {
+  if (!firebaseUser || posBooting) return;
+  posBooting = true;
+  document.getElementById('firebase-auth-screen')?.classList.add('hidden');
+  document.getElementById('login-screen')?.classList.add('hidden');
+  document.getElementById('app-layout')?.classList.add('hidden');
+  const loading = document.getElementById('loading-screen');
+  loading.classList.remove('hidden');
+  loading.innerHTML = '<div class="spinner"></div><div>Checking secure connection…</div>';
   try {
-    /* Pre-load: check reset token */
+    /* Only access reset metadata and POS data after Firebase Auth confirms this account. */
     try {
       const snap = await fbResetRef.once('value');
       const remoteToken = snap.val();
       const localToken = localStorage.getItem(LS_RESET_TOKEN_KEY) || '';
       if (remoteToken && remoteToken !== localToken) {
-        console.log('🚨 Reset token mismatch — wiping caches');
         await wipeAllCaches();
         try { localStorage.setItem(LS_RESET_TOKEN_KEY, remoteToken); } catch(e) {}
       }
-    } catch(e) { console.warn('Reset token check failed:', e); }
+    } catch(e) { console.warn('Reset token check unavailable:', e.message || e); }
 
-    /* Load cached data first (fast startup) */
     const cached = loadCache();
     if (isValidDB(cached)) {
-      DB = cached;
-      migrateDB();
-      applyTheme(DB.settings.theme || 'dark');
-      applyLogo();
+      DB = cached; migrateDB(); applyTheme(DB.settings.theme || 'dark'); applyLogo();
       document.getElementById('login-shop-name').textContent = DB.settings.shop_name;
     }
-
-    /* Load from server */
     const r = await loadFromServer();
     if (!r.ok) {
-      document.getElementById('loading-screen').innerHTML = `<div style="text-align:center;padding:20px;max-width:440px"><div style="font-size:56px;margin-bottom:16px">📡</div><h2 style="font-size:20px;margin-bottom:8px">Cannot reach Firebase</h2><p style="color:var(--text-2);font-size:13px;line-height:1.6">Check internet connection, then retry.</p><button class="ios-pill blue" style="margin-top:16px" onclick="location.reload()">🔄 Retry</button></div>`;
+      loading.innerHTML = `<div style="text-align:center;padding:20px;max-width:440px"><div style="font-size:56px;margin-bottom:16px">📡</div><h2 style="font-size:20px;margin-bottom:8px">Cannot reach Firebase</h2><p style="color:var(--text-2);font-size:13px;line-height:1.6">Check your internet connection and Database Rules, then retry.</p><button class="ios-pill blue" style="margin-top:16px" onclick="location.reload()">🔄 Retry</button><button class="ios-pill ghost" style="margin-top:8px" onclick="doLogout()">Sign out</button></div>`;
       return;
     }
-
-    applyTheme(DB.settings.theme || 'dark');
-    applyLogo();
+    applyTheme(DB.settings.theme || 'dark'); applyLogo();
     document.getElementById('login-shop-name').textContent = DB.settings.shop_name;
     rebuildOrderHistory();
-
-    const sid = Number(sessionStorage.getItem('pos_user_id'));
-    if (sid) { const u = DB.users.find(x => x.id === sid && x.active); if (u) currentUser = u; }
-    if (currentUser) {
-      document.getElementById('loading-screen').classList.add('hidden');
-      document.getElementById('login-screen').classList.add('hidden');
-      document.getElementById('app-layout').classList.remove('hidden');
-      updateUserBox(); buildNav(); buildMobileTabs();
-      currentView = firstAllowedView(); render();
-    } else showLogin();
-
+    /* Require the local POS staff login after Firebase authentication on every fresh app boot. */
+    sessionStorage.removeItem('pos_user_id'); currentUser = null; showLogin();
     fbInitDone = true;
-    startRealtimeSync();
-    startResetListener();
+    startRealtimeSync(); startResetListener();
     const vc = document.getElementById('version-chip'); if (vc) vc.textContent = POS_VERSION;
-    if (dirty || isDirtyLS()) { dirty = true; updateStorageStatus('offline-pending'); }
-    else updateStorageStatus();
+    if (dirty || isDirtyLS()) { dirty = true; updateStorageStatus('offline-pending'); } else updateStorageStatus();
   } catch(e) {
-    console.error('Init failed:', e);
-    document.getElementById('loading-screen').innerHTML = `<div style="text-align:center;padding:20px;max-width:440px"><div style="font-size:56px;margin-bottom:16px">⚠️</div><h2 style="font-size:20px;margin-bottom:8px">Startup error</h2><p style="color:var(--text-2);font-size:13px;line-height:1.6">${esc(e.message||'Unknown')}</p><button class="ios-pill blue" style="margin-top:16px" onclick="location.reload()">🔄 Retry</button></div>`;
+    console.error('Secure startup failed:', e);
+    loading.innerHTML = `<div style="text-align:center;padding:20px;max-width:440px"><div style="font-size:56px;margin-bottom:16px">⚠️</div><h2 style="font-size:20px;margin-bottom:8px">Startup error</h2><p style="color:var(--text-2);font-size:13px;line-height:1.6">${esc(e.message||'Unknown error')}</p><button class="ios-pill blue" style="margin-top:16px" onclick="location.reload()">🔄 Retry</button><button class="ios-pill ghost" style="margin-top:8px" onclick="doLogout()">Sign out</button></div>`;
+  } finally { posBooting = false; }
+}
+
+let posBooting = false;
+let posAuthUid = null;
+fbAuth.onAuthStateChanged(async (user) => {
+  if (user) {
+    if (posAuthUid === user.uid && (fbInitDone || posBooting)) return;
+    posAuthUid = user.uid;
+    await startPosAfterFirebaseAuth(user);
+  } else {
+    posAuthUid = null; posBooting = false; fbInitDone = false; currentUser = null;
+    try { sessionStorage.removeItem('pos_user_id'); } catch(e) {}
+    try { fbRef.off(); fbResetRef.off(); fbDB.ref('.info/connected').off(); } catch(e) {}
+    document.getElementById('app-layout')?.classList.add('hidden');
+    document.getElementById('login-screen')?.classList.add('hidden');
+    showFirebaseAuth();
   }
-})();
+});
+
 document.getElementById('login-pass').addEventListener('keypress', e => { if (e.key==='Enter') doLogin(); });
+document.getElementById('fb-password').addEventListener('keypress', e => { if (e.key==='Enter') doFirebaseLogin(); });
 
 /* Save on unload (best-effort) */
 window.addEventListener('beforeunload', () => {
